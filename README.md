@@ -6,7 +6,7 @@
 
 _UCThello - a board game demonstrator with computer AI using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short)_
 
-__Keywords:__ _Monte-Carlo Tree Search (MCTS), Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI, 2-player board game, deterministic game with perfect information, JavaScript, ECMAScript, W3C WebWorker_ 
+__Keywords, Categories__ _Monte-Carlo Tree Search (MCTS), Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI, 2-player board game, deterministic game with perfect information, JavaScript, ECMAScript, W3C WebWorker_ 
 
 #Description
 
