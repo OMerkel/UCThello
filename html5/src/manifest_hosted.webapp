@@ -1,0 +1,23 @@
+{
+  "version": "0.1",
+  "name": "UCThello",
+  "description": "MCTS UCT driven board game",
+  "launch_path": "/UCThello/html5/src/index.html",
+  "appcache_path": "/UCThello/html5/src/offline.appcache",
+  "icons": {
+    "16": "/UCThello/html5/src/img/icons/ucthello-16.png",
+    "32": "/UCThello/html5/src/img/icons/ucthello-32.png",
+    "48": "/UCThello/html5/src/img/icons/ucthello-48.png",
+    "60": "/UCThello/html5/src/img/icons/ucthello-60.png",
+    "64": "/UCThello/html5/src/img/icons/ucthello-64.png",
+    "90": "/UCThello/html5/src/img/icons/ucthello-90.png",
+    "120": "/UCThello/html5/src/img/icons/ucthello-120.png",
+    "128": "/UCThello/html5/src/img/icons/ucthello-128.png",
+    "256": "/UCThello/html5/src/img/icons/ucthello-256.png"
+  },
+  "developer": {
+    "name": "Oliver Merkel",
+    "url": "https://github.com/OMerkel/UCThello"
+  },
+  "installs_allowed_from": ["*"]
+}
