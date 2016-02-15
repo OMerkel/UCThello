@@ -31,4 +31,4 @@ Othello is a derivative of the board game Reversi which can be played by UCThell
 * HTML Living Standard, Web Workers, https://html.spec.whatwg.org
 * The Othello Museum, http://www.beppi.it/public/OthelloMuseum/pages/history.php
 
-Logos and trademarks belong to their respective owners.
+Logos, brands and trademarks belong to their respective owners.
