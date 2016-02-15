@@ -1,6 +1,7 @@
 # UCThello
 
-![UCThello icon](html5/src/img/icons/ucthello-128.png)
+![UCThello icon](html5/src/img/icons/ucthello-128.png) <em>Start an online</em> <b>UCThello</b> <em>session on</em> http://omerkel.github.io/UCThello/html5/src
+
 ## Abstract
 
 _UCThello - a board game demonstrator with computer AI using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short)_
