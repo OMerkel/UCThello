@@ -38,8 +38,8 @@ UctNode.prototype.selectChild = function () {
 };
 
 UctNode.prototype.update = function (result) {
-  this.visits += 1;
-  this.wins += result;
+  ++this.visits;
+  this.wins += result[this.activePlayer];
 };
 
 UctNode.prototype.mostVisitedChild = function () {

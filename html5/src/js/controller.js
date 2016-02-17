@@ -42,22 +42,22 @@ Controller.prototype.processHmiRequest = function( eventReceived ) {
   switch (data.request) {
     case 'movebyai':
       this.updateSettings( data );
-      var move = this.engine.getMostVisitedMove( this.board, 4000, false );
-      this.board.doMove( move );
-      this.draw( data );
+      var moveInfo = this.engine.getMoveInfo( this.board, 8000, 5000, false );
+      this.board.doMove( moveInfo.mostvisited );
+      this.draw( data, moveInfo );
       break;
     case 'move':
       this.updateSettings( data );
       this.board.doMove( data.move );
-      this.draw( data );
+      this.draw( data, null );
       break;
     case 'start':
       this.start();
-      this.draw( data );
+      this.draw( data, null );
       break;
     case 'restart':
       this.restart();
-      this.draw( data );
+      this.draw( data, null );
       break;
     default:
       console.log('Hmi used unknown request');
@@ -75,13 +75,13 @@ Controller.prototype.restart = function() {
   this.board.setup(8);
 };
 
-Controller.prototype.draw = function( data ) {
+Controller.prototype.draw = function( data, moveInfo ) {
   var board = this.board.getState();
   board.nextishuman = ( board.turn == 1 ? data.playerblack :
     data.playerwhite ) == 'Human' &&
     board.moves.length > 0 && board.moves[0].type == 'set';
   self.postMessage( { eventClass: 'request',
-    request: 'redraw', board: board } );
+    request: 'redraw', board: board, moveinfo: moveInfo } );
 };
 
 Controller.prototype.init = function() {

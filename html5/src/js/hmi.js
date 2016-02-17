@@ -35,7 +35,7 @@ function Hmi() {
 
 Hmi.prototype.resize = function() {
   var $window = $(window);
-  var offset_h=48;
+  var offset_h=72;
   var wh = window.innerHeight-offset_h;
   var ww = window.innerWidth-offset_h;
   var tmp = wh<ww ? wh : ww;
@@ -65,7 +65,7 @@ Hmi.prototype.mustPass = function(board) {
   return 1 == board.moves.length && board.moves[0].type == 'pass';
 };
 
-Hmi.prototype.renderStatus = function(board) {
+Hmi.prototype.renderStatus = function(board, moveInfo) {
   var status = '(B: ' + board.count[1] + ' / W: ' + board.count[0] + ') ';
   status += 0 == board.moves.length ? 'Game over.' :
     ( ( 0 == board.turn ? 'White' : 'Black' ) +
@@ -77,10 +77,13 @@ Hmi.prototype.renderStatus = function(board) {
       String.fromCharCode(97+board.previous.x) + (board.previous.y+1) +
       ' flipping ' + board.previous.flip.length + ' checkers.');
   }
+  if (moveInfo) {
+    status += '<br />' + Math.floor(moveInfo.nodespersecond) + " nodes/sec";
+  }
   $('#status').html(status);
 };
 
-Hmi.prototype.update = function(board) {
+Hmi.prototype.update = function(board, moveInfo) {
   this.board = board;
   for(var y=0; y<8; ++y) {
     for(var x=0; x<8; ++x) {
@@ -91,7 +94,7 @@ Hmi.prototype.update = function(board) {
   if( board.nextishuman ) {
     this.prepareHumanMove(board);
   }
-  this.renderStatus(board);
+  this.renderStatus(board, moveInfo);
   this.resize();
   if( this.mustPass(board) ) {
     setTimeout( this.pass.bind(this), 3000 );
@@ -230,7 +233,7 @@ Hmi.prototype.processEngineRequest = function( eventReceived ) {
   switch (data.request) {
     case 'redraw':
       console.log('Engine request: ' + data.request);
-      this.update(data.board);
+      this.update(data.board, data.moveinfo);
       break;
     default:
       console.log('Engine used unknown request');
