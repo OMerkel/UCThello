@@ -43,11 +43,13 @@ UctNode.prototype.update = function (result) {
 };
 
 UctNode.prototype.mostVisitedChild = function () {
-  for(var i=0; i<this.children.length; ++i) {
-    console.log(String.fromCharCode(97+this.children[i].move.x) +
-      (this.children[i].move.y+1) + ' (' + this.children[i].wins +
-      '/' + this.children[i].visits + ')');
-  }
+  /*
+    for(var i=0; i<this.children.length; ++i) {
+      console.log(String.fromCharCode(97+this.children[i].move.x) +
+        (this.children[i].move.y+1) + ' (' + this.children[i].wins +
+        '/' + this.children[i].visits + ')');
+    }
+   */
 
   var mostVisited = this.children[0];
   for(var i=1; i<this.children.length; ++i) {
