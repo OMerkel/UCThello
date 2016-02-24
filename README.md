@@ -32,7 +32,7 @@ Othello is a derivative of the board game Reversi which can be played by UCThell
 * The Othello Museum, http://www.beppi.it/public/OthelloMuseum/pages/history.php
 
 ##Othello Organizations
-Mind that UCThello follows (most) official tournament rules of the listed organizations depending on your selected options. Still UCThello is independend development from any work of these organizations.
+Mind that UCThello follows (most) official tournament rules of the listed organizations depending on your selected options. Still UCThello is independent development from any work of these organizations.
 
 * World Othello Federation, http://www.worldothello.org
 
