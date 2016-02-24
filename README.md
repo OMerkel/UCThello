@@ -10,9 +10,9 @@ __Keywords, Categories__ _Monte-Carlo Tree Search (MCTS), Upper Confidence Bound
 
 #Description
 
-UCThello is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the computer player AI. The board game used for demonstration purposes of the UCT algorithm is close to a game named Othello depending on selected options. In fact it can be played depending on your configuration following the official tournament rules of the WOF - World Othello Federation - if intended. Other rule settings to play variants are available, too.
+UCThello is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the computer player AI. The board game used for demonstration purposes of the UCT algorithm is close to a game named _Othello_ depending on selected options. In fact it can be played depending on your configuration following the official tournament rules of the WOF - World Othello Federation - if intended. Other rule settings to play variants are available, too.
 
-Othello is a derivative of the board game Reversi which can be played by UCThello as well. Reversi is claimed to be invented  by either Lewis Waterman or John W. Mollett. Predecessor of Reversi created by Mollett is The game of Annexation, also called Annex back in 19th century.
+_Othello_ is a derivative of the board game _Reversi_ which can be played by UCThello as well. _Reversi_ is claimed to be invented by either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created by Mollett is _The game of Annexation_, also called _Annex_ back in 19th century.
 
 #References
 
@@ -44,4 +44,15 @@ Mind that UCThello follows (most) official tournament rules of the listed organi
 * Othello Club Deutschland, http://www.othello-club.de.vu
 * United States Othello Association (USOA), http://www.usothello.org
 
-Logos, brands and trademarks belong to their respective owners.
+#Contributors / Authors
+
+<table>
+  <tr>
+    <td><p>Oliver Merkel,<br /><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This image is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+    </p>
+    </td>
+    <td width="30%"><img width="100%" ondragstart="return false;" alt="Oliver Merkel, Creative Commons License, This image is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License." src="html5/src/img/oliver_moher-150812.jpg" /></td>
+  </tr>
+</table>
+
+_All logos, brands and trademarks mentioned belong to their respective owners._
