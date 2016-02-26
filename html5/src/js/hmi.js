@@ -91,13 +91,12 @@ Hmi.prototype.update = function(board, moveInfo) {
         (y+1)).html( this.checker[board.square[x][y]] );
     }
   }
-  if( board.nextishuman ) {
-    this.prepareHumanMove(board);
-  }
   this.renderStatus(board, moveInfo);
   this.resize();
   if( this.mustPass(board) ) {
-    setTimeout( this.pass.bind(this), 3000 );
+    setTimeout( this.pass.bind(this), 2500 );
+  } else if( board.nextishuman ) {
+    this.prepareHumanMove(board);
   } else if ( !board.nextishuman && 0 < board.moves.length ) {
     this.requestAiMove(board);
   }
