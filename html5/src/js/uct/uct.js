@@ -30,10 +30,11 @@ Uct.prototype.getMoveInfo = function ( board, maxIterations, maxTime, verbose ) 
         node = node.addChild(variantBoard, j);
       }
       /* Simulation */
-      while(variantBoard.getMoves().length > 0) {
-        var ml = variantBoard.getMoves();
+      var ml = variantBoard.getMoves();
+      while(ml.length > 0) {
         variantBoard.doMove(ml[Math.floor(Math.random() * ml.length)]);
         ++nodesVisted;
+        ml = variantBoard.getMoves();
       }
       /* Backpropagation */
       var result = variantBoard.getResult();

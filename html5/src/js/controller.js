@@ -42,7 +42,7 @@ Controller.prototype.processHmiRequest = function( eventReceived ) {
   switch (data.request) {
     case 'movebyai':
       this.updateSettings( data );
-      var moveInfo = this.engine.getMoveInfo( this.board, 8000, 5000, false );
+      var moveInfo = this.engine.getMoveInfo( this.board, 12000, 4000, false );
       this.board.doMove( moveInfo.mostvisited );
       this.draw( data, moveInfo );
       break;
