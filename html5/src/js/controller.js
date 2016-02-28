@@ -8,11 +8,13 @@
 importScripts('board.js');
 importScripts('uct/uctnode.js');
 importScripts('uct/uct.js');
+importScripts('random/random.js');
 
 function Controller() {
   this.board = new OthelloBoard();
   this.board.setup(8);
-  this.engine = new Uct();
+  this.uct = new Uct();
+  this.random = new Random();
 }
 
 Controller.prototype.hmiEventListener = function( eventReceived ) {
@@ -40,19 +42,20 @@ Controller.prototype.processHmiResponse = function( eventReceived ) {
 Controller.prototype.processHmiRequest = function( eventReceived ) {
   var data = eventReceived.data;
   switch (data.request) {
-    case 'movebyai':
+    case 'actionbyai':
       this.updateSettings( data );
-      var moveInfo = this.engine.getMoveInfo( this.board, 12000, 4000, false );
-      this.board.doMove( moveInfo.mostvisited );
-      this.draw( data, moveInfo );
+      var actionInfo = 1 == this.board.ply ?
+        this.random.getActionInfo( this.board, false ) :
+        this.uct.getActionInfo( this.board, 12000, 4000, false );
+      this.board.doAction( actionInfo.action );
+      this.draw( data, actionInfo );
       break;
-    case 'move':
+    case 'perform':
       this.updateSettings( data );
-      this.board.doMove( data.move );
+      this.board.doAction( data.action );
       this.draw( data, null );
       break;
     case 'start':
-      this.start();
       this.draw( data, null );
       break;
     case 'restart':
@@ -68,20 +71,17 @@ Controller.prototype.updateSettings = function( data ) {
   this.board.rules.passingAllowed = data.passingallowed;
 };
 
-Controller.prototype.start = function() {
-};
-
 Controller.prototype.restart = function() {
   this.board.setup(8);
 };
 
-Controller.prototype.draw = function( data, moveInfo ) {
+Controller.prototype.draw = function( data, actionInfo ) {
   var board = this.board.getState();
   board.nextishuman = ( board.turn == 1 ? data.playerblack :
     data.playerwhite ) == 'Human' &&
-    board.moves.length > 0 && board.moves[0].type == 'set';
+    board.actions.length > 0 && board.actions[0].type == 'set';
   self.postMessage( { eventClass: 'request',
-    request: 'redraw', board: board, moveinfo: moveInfo } );
+    request: 'redraw', board: board, actioninfo: actionInfo } );
 };
 
 Controller.prototype.init = function() {

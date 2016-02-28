@@ -7,7 +7,7 @@
 
 function Uct() {}
 
-Uct.prototype.getMoveInfo = function ( board, maxIterations, maxTime, verbose ) {
+Uct.prototype.getActionInfo = function ( board, maxIterations, maxTime, verbose ) {
   var root = new UctNode(null, board, null);
   var startTime = (new Date()).getTime();
   var timeLimit = startTime + maxTime;
@@ -21,20 +21,20 @@ Uct.prototype.getMoveInfo = function ( board, maxIterations, maxTime, verbose ) 
       /* Selection */
       while (node.unexamined.length == 0 && node.children.length > 0) {
         node = node.selectChild();
-        variantBoard.doMove(node.move);
+        variantBoard.doAction(node.action);
       }
       /* Expansion */
       if (node.unexamined.length > 0) {
         var j = Math.floor(Math.random() * node.unexamined.length);
-        variantBoard.doMove(node.unexamined[j]);
+        variantBoard.doAction(node.unexamined[j]);
         node = node.addChild(variantBoard, j);
       }
       /* Simulation */
-      var ml = variantBoard.getMoves();
-      while(ml.length > 0) {
-        variantBoard.doMove(ml[Math.floor(Math.random() * ml.length)]);
+      var actions = variantBoard.getActions();
+      while(actions.length > 0) {
+        variantBoard.doAction(actions[Math.floor(Math.random() * actions.length)]);
         ++nodesVisted;
-        ml = variantBoard.getMoves();
+        actions = variantBoard.getActions();
       }
       /* Backpropagation */
       var result = variantBoard.getResult();
@@ -46,6 +46,7 @@ Uct.prototype.getMoveInfo = function ( board, maxIterations, maxTime, verbose ) 
   }
   var duration = (new Date()).getTime() - startTime;
   
-  return { mostvisited : root.mostVisitedChild().move,
-    nodespersecond : nodesVisted / duration * 1000 };
+  return { action : root.mostVisitedChild().action,
+    info: Math.floor(nodesVisted * 1000.0 / duration) +
+    " nodes/sec examined." };
 };

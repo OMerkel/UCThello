@@ -5,14 +5,14 @@
 // @author Oliver Merkel, <Merkel(dot)Oliver(at)web(dot)de>
 //
 
-function UctNode(parentNode, board, move) {
-  this.move = move;
+function UctNode(parentNode, board, action) {
+  this.action = action;
   this.parentNode = parentNode;
   this.children = [];
   this.wins = 0;
   this.visits = 0;
-  this.unexamined = board.getMoves();
-  this.activePlayer = board.activePlayer;
+  this.unexamined = board.getActions();
+  this.activePlayer = board.active;
 }
 
 UctNode.prototype.addChild = function (board, index) {
@@ -45,8 +45,8 @@ UctNode.prototype.update = function (result) {
 UctNode.prototype.mostVisitedChild = function () {
   /*
     for(var i=0; i<this.children.length; ++i) {
-      console.log(String.fromCharCode(97+this.children[i].move.x) +
-        (this.children[i].move.y+1) + ' (' + this.children[i].wins +
+      console.log(String.fromCharCode(97+this.children[i].action.x) +
+        (this.children[i].action.y+1) + ' (' + this.children[i].wins +
         '/' + this.children[i].visits + ')');
     }
    */

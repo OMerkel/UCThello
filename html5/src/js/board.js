@@ -23,7 +23,7 @@ function OthelloBoard() {
 OthelloBoard.prototype.setup = function (size) {
   this.size = size;
   var halfsize = Math.floor(size / 2);
-  this.activePlayer = this.field.playerO;
+  this.active = this.field.playerO;
   this.board = [];
   for(var i=0; i<size; ++i) {
     var row = [];
@@ -37,13 +37,14 @@ OthelloBoard.prototype.setup = function (size) {
   this.board[halfsize-1][halfsize] = this.field.playerO;
   this.board[halfsize][halfsize-1] = this.field.playerO;
   this.passing = false;
-  this.previousMove = { type: this.none };
+  this.previousAction = { type: this.none };
+  this.ply = 1;
 };
 
 OthelloBoard.prototype.copy = function () {
   var result = new OthelloBoard();
   result.size = this.size;
-  result.activePlayer = this.activePlayer;
+  result.active = this.active;
   result.board = [];
   for(var i=0; i<this.size; ++i) {
     var column = [];
@@ -53,17 +54,18 @@ OthelloBoard.prototype.copy = function () {
     result.board[result.board.length] = column;
   }
   result.passing = this.passing;
-  result.previousMove = { type: this.previousMove.type };
-  if (this.set == this.previousMove) {
-    result.previousMove.x = this.previousMove.x;
-    result.previousMove.y = this.previousMove.y;
-    result.previousMove.by = this.previousMove.by;
-    result.previousMove.flip = [];
-    for(var i=0; i<this.previousMove.flip.length; ++i) {
-      result.previousMove.flip[i] = { x: this.previousMove.flip[i].x,
-        y: this.previousMove.flip[i].y };
+  result.previousAction = { type: this.previousAction.type };
+  if (this.set == this.previousAction) {
+    result.previousAction.x = this.previousAction.x;
+    result.previousAction.y = this.previousAction.y;
+    result.previousAction.by = this.previousAction.by;
+    result.previousAction.flip = [];
+    for(var i=0; i<this.previousAction.flip.length; ++i) {
+      result.previousAction.flip[i] = { x: this.previousAction.flip[i].x,
+        y: this.previousAction.flip[i].y };
     }
   }
+  result.ply = this.ply;
   return result;
 };
 
@@ -72,10 +74,10 @@ OthelloBoard.prototype.onBoard = function ( position ) {
          position.y >= 0 && position.y < this.size;
 };
 
-OthelloBoard.prototype.getMoves = function () {
-  var move = [];
+OthelloBoard.prototype.getActions = function () {
+  var action = [];
   if ( this.getStatistics()[this.field.empty] > 0 ) {
-    var opponent = this.activePlayer ^ 1;
+    var opponent = this.active ^ 1;
     for(var y=0; y<this.size; ++y) {
       for(var x=0; x<this.size; ++x) {
         if(this.field.empty == this.board[x][y]) {
@@ -88,8 +90,8 @@ OthelloBoard.prototype.getMoves = function () {
                   y: step.y+this.direction[d].y };
               }
               if(this.onBoard(step) &&
-                this.activePlayer == this.board[step.x][step.y]) {
-                move[move.length] = { type: this.set, x: x, y: y };
+                this.active == this.board[step.x][step.y]) {
+                action[action.length] = { type: this.set, x: x, y: y };
                 d=this.direction.length;
               }
             }
@@ -97,22 +99,22 @@ OthelloBoard.prototype.getMoves = function () {
         }
       }
     }
-    move = 0 == move.length && !this.passing && this.rules.passingAllowed ?
-      [ { type: this.pass } ] : move;
+    action = 0 == action.length && !this.passing && this.rules.passingAllowed ?
+      [ { type: this.pass } ] : action;
   }
-  return move;
+  return action;
 };
 
-OthelloBoard.prototype.doMove = function (move) {
-  var opponent = this.activePlayer ^ 1;
-  this.passing = move.type == this.pass && this.rules.passingAllowed;
+OthelloBoard.prototype.doAction = function (action) {
+  var opponent = this.active ^ 1;
+  this.passing = action.type == this.pass && this.rules.passingAllowed;
   var historyInfo = this.passing ? { type: this.pass } :
-    { type: this.set, x: move.x, y: move.y, by: this.activePlayer, flip: [] };
+    { type: this.set, x: action.x, y: action.y, by: this.active, flip: [] };
   if ( !this.passing ) {
-    this.board[move.x][move.y] = this.activePlayer;
+    this.board[action.x][action.y] = this.active;
     for(var d=0; d<this.direction.length; ++d) {
-      var step = { x: move.x+this.direction[d].x,
-        y: move.y+this.direction[d].y };
+      var step = { x: action.x+this.direction[d].x,
+        y: action.y+this.direction[d].y };
       if(this.onBoard(step) && opponent == this.board[step.x][step.y]) {
         opponentField = [];
         while(this.onBoard(step) &&
@@ -122,10 +124,10 @@ OthelloBoard.prototype.doMove = function (move) {
             y: step.y+this.direction[d].y };
         }
         if(this.onBoard(step) &&
-          this.activePlayer == this.board[step.x][step.y]) {
+          this.active == this.board[step.x][step.y]) {
           for(var i=0; i<opponentField.length; ++i) {
             this.board[opponentField[i].x][opponentField[i].y] =
-              this.activePlayer;
+              this.active;
             historyInfo.flip[historyInfo.flip.length] =
               { x: opponentField[i].x, y: opponentField[i].y };
           }
@@ -133,8 +135,9 @@ OthelloBoard.prototype.doMove = function (move) {
       }
     }
   }
-  this.activePlayer = opponent;
-  this.previousMove = historyInfo;
+  this.active = opponent;
+  this.previousAction = historyInfo;
+  ++this.ply;
 };
 
 OthelloBoard.prototype.getStatistics = function() {
@@ -177,7 +180,7 @@ OthelloBoard.prototype.getState = function() {
     }
     board[board.length] = column;
   }
-  return { square: board, turn: this.activePlayer,
-    moves: this.getMoves(), previous: this.previousMove,
+  return { square: board, turn: this.active, ply: this.ply,
+    actions: this.getActions(), previous: this.previousAction,
     count: this.getStatistics() };
 };

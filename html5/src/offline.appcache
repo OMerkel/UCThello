@@ -24,6 +24,7 @@ img/rules_sog.png
 js/board.js
 js/controller.js
 js/hmi.js
+js/random/random.js
 js/uct/uct.js
 js/uct/uctnode.js
 thirdparty/jquery.mobile-1.4.5/demos/favicon.ico

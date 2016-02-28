@@ -62,28 +62,29 @@ Hmi.prototype.resize = function() {
 };
 
 Hmi.prototype.mustPass = function(board) {
-  return 1 == board.moves.length && board.moves[0].type == 'pass';
+  return 1 == board.actions.length && board.actions[0].type == 'pass';
 };
 
-Hmi.prototype.renderStatus = function(board, moveInfo) {
+Hmi.prototype.renderStatus = function(board, actionInfo) {
   var status = '(B: ' + board.count[1] + ' / W: ' + board.count[0] + ') ';
-  status += 0 == board.moves.length ? 'Game over.' :
+  status += 0 == board.actions.length ? 'Game over.' :
     ( ( 0 == board.turn ? 'White' : 'Black' ) +
     ( this.mustPass(board) ? ' must pass this turn!' : " to play." ) );
   if (board.previous.type != 'none') {
-    var previousMovePlayer = ( 0 == board.previous.by ? 'White' : 'Black' );
-    status += '<br />' + previousMovePlayer +
-      ( board.previous.type == 'pass' ? ' passed.' : ' set ' +
-      String.fromCharCode(97+board.previous.x) + (board.previous.y+1) +
-      ' flipping ' + board.previous.flip.length + ' checkers.');
+    var previousActionPlayer = ( 0 == board.previous.by ? 'White' : 'Black' );
+    var pos = String.fromCharCode(97+board.previous.x) + (board.previous.y+1);
+    status += '<br />' + ( board.ply >> 1 ) + '. ' +
+      ( board.previous.type == 'pass' ? ( previousActionPlayer + ' passed.' ) :
+      ( 'Black' == previousActionPlayer ? pos + '&#8230;' : '&#8230;' + pos ) +
+      ' by ' + previousActionPlayer + ' flipping ' + board.previous.flip.length + ' checkers.');
   }
-  if (moveInfo) {
-    status += '<br />' + Math.floor(moveInfo.nodespersecond) + " nodes/sec";
+  if (actionInfo) {
+    status += '<br />' + actionInfo.info;
   }
   $('#status').html(status);
 };
 
-Hmi.prototype.update = function(board, moveInfo) {
+Hmi.prototype.update = function(board, actionInfo) {
   this.board = board;
   for(var y=0; y<8; ++y) {
     for(var x=0; x<8; ++x) {
@@ -91,42 +92,42 @@ Hmi.prototype.update = function(board, moveInfo) {
         (y+1)).html( this.checker[board.square[x][y]] );
     }
   }
-  this.renderStatus(board, moveInfo);
+  this.renderStatus(board, actionInfo);
   this.resize();
   if( this.mustPass(board) ) {
     setTimeout( this.pass.bind(this), 2500 );
   } else if( board.nextishuman ) {
     this.prepareHumanMove(board);
-  } else if ( !board.nextishuman && 0 < board.moves.length ) {
-    this.requestAiMove(board);
+  } else if ( !board.nextishuman && 0 < board.actions.length ) {
+    this.requestAiAction(board);
   }
 };
 
 Hmi.prototype.prepareHumanMove = function ( board ) {
   var showAvailableMove = $('#showavailablemove').is(':checked');
-  for(var i=0; i<board.moves.length; ++i) {
-    var field = '#field' + String.fromCharCode(97+board.moves[i].x) +
-      (board.moves[i].y+1);
+  for(var i=0; i<board.actions.length; ++i) {
+    var field = '#field' + String.fromCharCode(97+board.actions[i].x) +
+      (board.actions[i].y+1);
     $(field).html(showAvailableMove ? this.validMove : this.emptySquare);
     $(field).on( 'click', this.clickHandler.bind(this) );
   }
 };
 
-Hmi.prototype.requestAiMove = function ( board ) {
-  console.log('AI ' + board.turn + ' to move next!');
+Hmi.prototype.requestAiAction = function ( board ) {
+  // console.log('AI ' + board.turn + ' to move next!');
   /* @TODO: disable 'new game' */
   var playerWhite = $('#playerwhiteai').is(':checked') ? 'AI' : 'Human';
   var playerBlack = $('#playerblackai').is(':checked') ? 'AI' : 'Human';
   var passingAllowed = $('#nomovepass').is(':checked');
-  this.engine.postMessage({ class: 'request', request: 'movebyai',
+  this.engine.postMessage({ class: 'request', request: 'actionbyai',
     playerwhite: playerWhite, playerblack: playerBlack,
     passingallowed: passingAllowed });
 };
 
 Hmi.prototype.deactivateClicks = function () {
-  for(var i=0; i<this.board.moves.length; ++i) {
-    var field = '#field' + String.fromCharCode(97+this.board.moves[i].x) +
-      (this.board.moves[i].y+1)
+  for(var i=0; i<this.board.actions.length; ++i) {
+    var field = '#field' + String.fromCharCode(97+this.board.actions[i].x) +
+      (this.board.actions[i].y+1)
     $(field).html(this.emptySquare);
     $(field).off( 'click' );
   }
@@ -140,16 +141,16 @@ Hmi.prototype.clickHandler = function( event ) {
 };
 
 Hmi.prototype.pass = function () {
-  var move = { type: 'pass' };
-  this.send( move );
+  var pass = { type: 'pass' };
+  this.send( pass );
 };
 
-Hmi.prototype.send = function ( move ) {
+Hmi.prototype.send = function ( action ) {
   var playerWhite = $('#playerwhiteai').is(':checked') ? 'AI' : 'Human';
   var playerBlack = $('#playerblackai').is(':checked') ? 'AI' : 'Human';
   var passingAllowed = $('#nomovepass').is(':checked');
   this.engine.postMessage({ class: 'request',
-    request: 'move', move: move,
+    request: 'perform', action: action,
     playerwhite: playerWhite, playerblack: playerBlack,
     passingallowed: passingAllowed });
 };
@@ -232,7 +233,7 @@ Hmi.prototype.processEngineRequest = function( eventReceived ) {
   switch (data.request) {
     case 'redraw':
       console.log('Engine request: ' + data.request);
-      this.update(data.board, data.moveinfo);
+      this.update(data.board, data.actioninfo);
       break;
     default:
       console.log('Engine used unknown request');
