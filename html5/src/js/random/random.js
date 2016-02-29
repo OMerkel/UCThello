@@ -13,5 +13,5 @@ Random.prototype.getActionInfo = function ( board, verbose ) {
   var nodesVisted = 1;
   var duration = (new Date()).getTime() - startTime;
   return { action : actions[Math.floor(Math.random() * actions.length)],
-    info: 'Random select out of ' + actions.length + ' available sets.' };
+    info: 'Random select out of ' + actions.length + ' available actions.' };
 };
