@@ -1,6 +1,11 @@
-# UCThello
+<img alt="UCThello icon" width="64" src="html5/src/img/icons/ucthello-64.png" /> UCThello
+====================
 
-![UCThello icon](html5/src/img/icons/ucthello-128.png) <em>Start an online</em> <b>UCThello</b> <em>session on</em> http://omerkel.github.io/UCThello/html5/src
+* <em>Start an online</em> <b>UCThello</b> <em>session on</em> http://omerkel.github.io/UCThello/html5/src
+* <em>Also published in</em> <a href="https://marketplace.firefox.com/app/ucthello"><img align="middle" width="150px" src="https://marketplace.cdn.mozilla.net/media/fireplace/img/pretty/marketplace_logo.png" /></a>
+* <em>runs in various browsers on</em>
+    * <em>desktop systems like BSDs, Linux, Win, MacOS and</em>
+    * <em>mobile platforms like Android, FirefoxOS, iOS.</em>
 
 ## Abstract
 
