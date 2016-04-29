@@ -4,15 +4,15 @@
   "description": "MCTS UCT driven board game",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/img/icons/ucthello-16.png",
-    "32": "/img/icons/ucthello-32.png",
-    "48": "/img/icons/ucthello-48.png",
-    "60": "/img/icons/ucthello-60.png",
-    "64": "/img/icons/ucthello-64.png",
-    "90": "/img/icons/ucthello-90.png",
-    "120": "/img/icons/ucthello-120.png",
-    "128": "/img/icons/ucthello-128.png",
-    "256": "/img/icons/ucthello-256.png"
+    "16": "/img/icons/ucthello16.png",
+    "32": "/img/icons/ucthello32.png",
+    "48": "/img/icons/ucthello48.png",
+    "60": "/img/icons/ucthello60.png",
+    "64": "/img/icons/ucthello64.png",
+    "90": "/img/icons/ucthello90.png",
+    "120": "/img/icons/ucthello120.png",
+    "128": "/img/icons/ucthello128.png",
+    "256": "/img/icons/ucthello256.png"
   },
   "developer": {
     "name": "Oliver Merkel",
