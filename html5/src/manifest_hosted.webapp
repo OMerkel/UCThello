@@ -3,7 +3,6 @@
   "name": "UCThello",
   "description": "MCTS UCT driven board game",
   "launch_path": "/UCThello/html5/src/index.html",
-  "appcache_path": "/UCThello/html5/src/offline.appcache",
   "icons": {
     "16": "/UCThello/html5/src/img/icons/ucthello16.png",
     "32": "/UCThello/html5/src/img/icons/ucthello32.png",
