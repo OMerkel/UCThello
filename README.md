@@ -1,4 +1,4 @@
-<img alt="UCThello icon" width="64" src="html5/src/img/icons/ucthello-64.png" /> UCThello
+<img alt="UCThello icon" width="64" src="html5/src/img/icons/ucthello64.png" /> UCThello
 ====================
 
 * <em>Start an online</em> <b>UCThello</b> <em>session on</em> http://omerkel.github.io/UCThello/html5/src
