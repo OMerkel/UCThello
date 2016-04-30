@@ -3,19 +3,32 @@
 
 * <em>Start an online</em> <b>UCThello</b> <em>session on</em> http://omerkel.github.io/UCThello/html5/src
 * <em>Also published in</em> <a href="https://marketplace.firefox.com/app/ucthello"><img align="middle" width="150px" src="https://marketplace.cdn.mozilla.net/media/fireplace/img/pretty/marketplace_logo.png" /></a>
+* <em>Android APK available for install</em> <img align="top" width="32" src="apk/android.gif" /> http://omerkel.github.io/UCThello/apk/ucthello-0.1.apk
 * <em>Runs in various browsers on</em>
     * <em>desktop systems like BSDs, Linux, Win, MacOS and</em>
     * <em>mobile platforms like Android, FirefoxOS, iOS.</em>
 
 ## Abstract
 
-_UCThello - a board game demonstrator with computer AI using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short)_
+_UCThello - a board game demonstrator with computer AI using
+Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds)
+applied to trees (UCT in short)_
 
-__Keywords, Categories__ _Monte-Carlo Tree Search (MCTS), Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI, 2-player board game, deterministic game with perfect information, JavaScript, ECMAScript, W3C WebWorker_ 
+__Keywords, Categories__ _Monte-Carlo Tree Search (MCTS),
+Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI,
+2-player board game, deterministic game with perfect information,
+JavaScript, ECMAScript, W3C WebWorker_ 
 
 #Description
 
-UCThello is a board game using Monte-Carlo Tree Search (MCTS) with UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the computer player AI. The board game used for demonstration purposes of the UCT algorithm is close to a game named _Othello_ depending on selected options. In fact it can be played depending on your configuration following the official tournament rules of the WOF - World Othello Federation - if intended. Other rule settings to play variants are available, too.
+UCThello is a board game using Monte-Carlo Tree Search (MCTS) with
+UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the
+computer player AI. The board game used for demonstration purposes of
+the UCT algorithm is close to a game named _Othello_ depending on
+selected options. In fact it can be played depending on your
+configuration following the official tournament rules of the
+WOF - World Othello Federation - if intended. Other rule settings
+to play variants are available, too.
 
 _Othello_ is a derivative of the board game _Reversi_ which can be played by UCThello as well. _Reversi_ is claimed to be invented by either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created by Mollett is _The game of Annexation_, also called _Annex_ back in 19th century.
 
