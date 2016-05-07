@@ -31,8 +31,9 @@
         <splash src="res/android/splash-port-ldpi.png" density="port-ldpi"/>
         <splash src="res/android/splash-port-mdpi.png" density="port-mdpi"/>
         <splash src="res/android/splash-port-xhdpi.png" density="port-xhdpi"/>
+        <preference name="SplashMaintainAspectRatio" value="true" />
         <preference name="SplashScreenDelay" value="5000" />
-        <preference name="FadeSplashScreenDuration" value="1000"/>
+        <preference name="FadeSplashScreenDuration" value="1000" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
