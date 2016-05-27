@@ -201,6 +201,7 @@ Hmi.prototype.restart = function() {
   this.engine.postMessage({ class: 'request', request: 'restart',
     playerwhite: playerWhite, playerblack: playerBlack,
     passingallowed: passingAllowed });
+  $( '#left-panel' ).panel( 'close' );
 };
 
 Hmi.prototype.engineEventListener = function( eventReceived ) {
