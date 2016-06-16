@@ -33,6 +33,28 @@ to play variants are available, too.
 
 _Othello_ is a derivative of the board game _Reversi_ which can be played by UCThello as well. _Reversi_ is claimed to be invented by either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created by Mollett is _The game of Annexation_, also called _Annex_ back in 19th century.
 
+#Monte-Carlo Tree Search
+
+The Monte-Carlo Tree Search (MCTS in short) represents an algorithms used to build a
+search tree by successively adding nodes according to traversing of nodes and
+simulations in the problem domain. If the problem domain is a game then the nodes
+can represent moves according to the game rules. 
+Traversing nodes follows a <em>Selection Strategy</em>. Simulations are often called
+<em>playouts</em>, too. The different nodes inside the simulated paths get statistics
+reflecting ratios of win and loss related to total amount of simulations.
+Assumption is that with higher total amount of simulations the confidence in the
+statistics gets high enough and allows to select quality nodes or moves. 
+Such that the idea is to retrieve the acceptable next node or move with optimal
+ratio then.
+
+<img src='http://omerkel.github.io/UCThello/res/mcts_1_typical_mcts_states.svg' />
+
+The repetitive MCTS algorithm is modelled to perform four main states typically called
+* Selection,
+* Expansion,
+* Simulation, and
+* Backpropagation. See [Chaslot, 2010]
+
 #References
 
 * Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
