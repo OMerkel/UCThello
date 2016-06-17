@@ -131,7 +131,7 @@ Chaslot used these in earlier publications dating back to 2006, too.
     <g>
       <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="736.15,190 805.575,190 805.575,190 870.528,190 "/>
       <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="862.764,195 872.764,190 862.764,185 "/>
-      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="817" y="164">[#repetitions &gt; MAXREPETITIONS]</text>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="817" y="164">[#iterations &gt; MAXITERATIONS]</text>
     </g>
   </g>
 </svg>
