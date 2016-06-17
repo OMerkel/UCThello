@@ -36,9 +36,9 @@ _Othello_ is a derivative of the board game _Reversi_ which can be played by UCT
 #Monte-Carlo Tree Search
 
 The Monte-Carlo Tree Search (MCTS in short) represents an algorithms used to build a
-search tree by successively adding nodes according to traversing of nodes and
-simulations in the problem domain. If the problem domain is a game then the nodes
-can represent moves according to the game rules. 
+search tree interatively by successively adding nodes according to traversing of
+nodes and simulations in the problem domain. If the problem domain is a game then
+the nodes can represent moves according to the game rules. 
 Traversing nodes follows a <em>Selection Strategy</em>. Simulations are often called
 <em>playouts</em>, too. The different nodes inside the simulated paths get statistics
 reflecting ratios of win and loss related to total amount of simulations.
@@ -49,11 +49,21 @@ ratio then.
 
 <img src='http://omerkel.github.io/UCThello/res/mcts_1_typical_mcts_states.svg' />
 
-The repetitive MCTS algorithm is modelled to perform four main states typically called
+The iterative MCTS algorithm is modelled to perform four main states typically called
 * Selection,
 * Expansion,
 * Simulation, and
 * Backpropagation. See [Chaslot, 2010]
+
+First step or state in an MCTS algorithm iteration is the <b>Selection</b>. Objective
+of the Selection is to retrieve a path beginning at the root node towards a selected
+leaf node from the search tree. The search tree is fixed in the Selection state. It
+grows in a later state of the algorithm by getting more nodes on each iteration of
+the MCTS. Only exception is when a selected path has a final leaf node that is a
+terminal node. A terminal node simply is a move representation of an end of game situation
+according to the rules. The root node represents the current game or problem domain
+situation. To traverse the search tree from the root node towards the leaf nodes
+simply means to follow a possible predicted variant of game play.
 
 #References
 
