@@ -35,12 +35,12 @@ _Othello_ is a derivative of the board game _Reversi_ which can be played by UCT
 
 #Monte-Carlo Tree Search
 
-The Monte-Carlo Tree Search (MCTS in short) represents an algorithms used to build a
-search tree interatively by successively adding nodes according to traversing of
+The __Monte-Carlo Tree Search__ (MCTS in short) represents an algorithms used to build a
+_Search Tree_ interatively by successively adding nodes according to traversing of
 nodes and simulations in the problem domain. If the problem domain is a game then
 the nodes can represent moves according to the game rules. 
-Traversing nodes follows a <em>Selection Strategy</em>. Simulations are often called
-<em>playouts</em>, too. The different nodes inside the simulated paths get statistics
+Traversing nodes follows a _Selection Strategy_. _Simulations_ are often called
+_playouts_, too. The different nodes inside the simulated paths get statistics
 reflecting ratios of win and loss related to total amount of simulations.
 Assumption is that with higher total amount of simulations the confidence in the
 statistics gets high enough and allows to select quality nodes or moves. 
@@ -50,25 +50,27 @@ ratio then.
 <img src='http://omerkel.github.io/UCThello/res/mcts_1_typical_mcts_states.svg' />
 
 The iterative MCTS algorithm is modelled to perform four main states typically called
-* Selection,
-* Expansion,
-* Simulation, and
-* Backpropagation. See [Cha10] &amp; [CBSS08]
+* _Selection_,
+* _Expansion_,
+* _Simulation_, and
+* _Backpropagation_. See [Cha10] &amp; [CBSS08]
 
-First step or state in an MCTS algorithm iteration is the <b>Selection</b>. Objective
+First step or state in an MCTS algorithm iteration is the __Selection__. Objective
 of the Selection is to retrieve a path beginning at the root node towards a selected
-leaf node from the search tree. The search tree is fixed in the Selection state. It
-grows in a later state of the algorithm by getting more nodes on each iteration of
+leaf node from the search tree. The Search Tree stays fixed inside the Selection state. It
+grows in a later state of the algorithm by appending more nodes on each iteration of
 the MCTS. Only exception is when a selected path has a final leaf node that is a
-terminal node. A terminal node simply is a move representation of an end of game situation
+_terminal node_. A terminal node simply is a move representation of an end of game situation
 according to the rules. The root node represents the current game or problem domain
 situation. To traverse the search tree from the root node towards the leaf nodes
-simply means to follow a possible predicted variant of game play.
+simply means to follow a possible predicted _variant_ of game play.
+
+<img src='http://omerkel.github.io/UCThello/res/mcts_2_selection.svg' />
 
 #References
 
-* [Cha10] Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
-* [CBSS08] Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
+* __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
+* __[CBSS08]__ Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
 * Brian Rose, "[Othello. A Minute to Learn... A Lifetime to Master](http://www.ffothello.org/livres/othello-book-Brian-Rose.pdf)", 2005. 
 
 # 3rd Party Libraries
