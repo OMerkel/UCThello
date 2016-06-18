@@ -172,9 +172,9 @@ Chaslot used these in earlier publications dating back to 2006, too.
   <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="106.225" y="193" width="406" height="324"/>
   <line style="fill: none; fill-opacity:0; stroke-width: 1.5; stroke: #000000" x1="106.225" y1="223" x2="512.225" y2="223"/>
   <g>
-    <polygon style="fill: #ffffff" points="551.827,191 788.827,191 800.827,203 800.827,305 551.827,305 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="551.827,191 788.827,191 800.827,203 800.827,305 551.827,305 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="788.827,191 788.827,203 800.827,203 "/>
+    <polygon style="fill: #ffffff" points="551.827,191 812.827,191 824.827,203 824.827,305 551.827,305 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="551.827,191 812.827,191 824.827,203 824.827,305 551.827,305 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="812.827,191 812.827,203 824.827,203 "/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="558.827" y="214.65">
       <tspan x="558.827" y="214.65">The 'select child node' will</tspan>
       <tspan x="558.827" y="230.65">contain a Selection Strategy,</tspan>
@@ -186,9 +186,9 @@ Chaslot used these in earlier publications dating back to 2006, too.
   </g>
   <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" points="551.827,248 433.827,248 433.827,301 433.827,301 "/>
   <g>
-    <polygon style="fill: #ffffff" points="549.827,388 863.827,388 875.827,400 875.827,534 549.827,534 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="549.827,388 863.827,388 875.827,400 875.827,534 549.827,534 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="863.827,388 863.827,400 875.827,400 "/>
+    <polygon style="fill: #ffffff" points="549.827,388 888.827,388 900.827,400 900.827,534 549.827,534 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="549.827,388 888.827,388 900.827,400 900.827,534 549.827,534 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="888.827,388 888.827,400 900.827,400 "/>
     <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="556.827" y="411.65">
       <tspan x="556.827" y="411.65">The resulting position traversed in the</tspan>
       <tspan x="556.827" y="427.65">search tree is unexplored here. Another</tspan>
