@@ -55,8 +55,8 @@ The iterative MCTS algorithm is modelled to perform four main states typically c
 * _Simulation_, and
 * _Backpropagation_. See [Cha10] &amp; [CBSS08]
 
-First step or state in an MCTS algorithm iteration is the __Selection__. Objective
-of the Selection is to retrieve a path beginning at the root node towards a selected
+First step or state in an MCTS algorithm iteration is the __Selection__. _Objective
+of the Selection_ is to retrieve a path beginning at the root node towards a selected
 leaf node from the search tree. The Search Tree stays fixed inside the Selection state. It
 grows in a later state of the algorithm by appending more nodes on each iteration of
 the MCTS. Only exception is when a selected path has a final leaf node that is a
@@ -66,6 +66,17 @@ situation. To traverse the search tree from the root node towards the leaf nodes
 simply means to follow a possible predicted _variant_ of game play.
 
 <img src='http://omerkel.github.io/UCThello/res/mcts_2_selection.svg' />
+
+The _objective of the Selection Strategy_ is to branch the intended search path in
+a balance of information _exploration_ and _exploitation_. If a branch is selected
+following a search path branch already examined previously this is seen as an
+exploit. An exploit shall confirm the quality of an already examined node in terms
+of gaining higher statistical confidence. Higher statistical confidence does mean
+to have more reliable estimates. Exploration is performed by creating new
+nodes in later MCTS steps or alternatively search path branch selection of
+relatively rare traversed nodes. Nodes traversed in a low amount simply reflects
+a low reliability or statistical confidence. The border between exploit and explore
+is often seen as being soft and fluent. 
 
 #References
 
