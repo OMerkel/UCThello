@@ -78,6 +78,13 @@ relatively rare traversed nodes. Nodes traversed in a low amount simply reflects
 a low reliability or statistical confidence. The border between exploit and explore
 is often seen as being soft and fluent. 
 
+Besides the Selection Strategy in search path branch Selection an additional
+aspect is seen. To avoid a risk that any high quality node is unvisited that
+is located near the rood node already. To reach such a design goal a possible
+solution is to favor traversing any unexplored child node over following
+explored siblings. Widening the search tree is then favored over deepening.
+Critics could be that randomness of Monte-Carlo methods is reduced if applied.
+
 #References
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
