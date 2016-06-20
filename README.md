@@ -31,19 +31,23 @@ configuration following the official tournament rules of the
 WOF - World Othello Federation - if intended. Other rule settings
 to play variants are available, too.
 
-_Othello_ is a derivative of the board game _Reversi_ which can be played by UCThello as well. _Reversi_ is claimed to be invented by either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created by Mollett is _The game of Annexation_, also called _Annex_ back in 19th century.
+_Othello_ is a derivative of the board game _Reversi_ which can be
+played by UCThello as well. _Reversi_ is claimed to be invented by
+either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created
+by Mollett is _The game of Annexation_, also called _Annex_ back in
+19th century.
 
 #Monte-Carlo Tree Search
 
 The __Monte-Carlo Tree Search__ (MCTS in short) represents an algorithms used to build a
 _Search Tree_ interatively by successively adding nodes according to traversing of
 nodes and simulations in the problem domain. If the problem domain is a game then
-the nodes can represent moves according to the game rules. 
+the nodes can represent moves according to the game rules.
 Traversing nodes follows a _Selection Strategy_. _Simulations_ are often called
 _playouts_, too. The different nodes inside the simulated paths get statistics
 reflecting ratios of win and loss related to total amount of simulations.
 Assumption is that with higher total amount of simulations the confidence in the
-statistics gets high enough and allows to select quality nodes or moves. 
+statistics gets high enough and allows to select quality nodes or moves.
 Such that the idea is to retrieve the acceptable next node or move with optimal
 ratio then.
 
@@ -55,6 +59,7 @@ The iterative MCTS algorithm is modelled to perform four main states typically c
 * _Simulation_, and
 * _Backpropagation_. See [Cha10] &amp; [CBSS08]
 
+##Selection
 First step or state in an MCTS algorithm iteration is the __Selection__. _Objective
 of the Selection_ is to retrieve a path beginning at the root node towards a selected
 leaf node from the search tree. The Search Tree stays fixed inside the Selection state. It
@@ -74,9 +79,9 @@ exploit. An exploit shall confirm the quality of an already examined node in ter
 of gaining higher statistical confidence. Higher statistical confidence does mean
 to have more reliable estimates. Exploration is performed by creating new
 nodes in later MCTS steps or alternatively search path branch selection of
-relatively rare traversed nodes. Nodes traversed in a low amount simply reflects
-a low reliability or statistical confidence. The border between exploit and explore
-is often seen as being soft and fluent. 
+relatively rare traversed nodes. Nodes traversed in a low amount simply
+reflects a low reliability or statistical confidence. The border between
+exploit and explore is often seen as being soft and fluent.
 
 Besides the Selection Strategy in search path branch Selection an additional
 aspect is seen. To avoid a risk that any high quality node is unvisited that
@@ -84,6 +89,34 @@ is located near the rood node already. To reach such a design goal a possible
 solution is to favor traversing any unexplored child node over following
 explored siblings. Widening the search tree is then favored over deepening.
 Critics could be that randomness of Monte-Carlo methods is reduced if applied.
+
+UCThello implements to favor early _Selection_ of a traversed node on
+any unexplored child existing. Such an unexplored child is preferred
+over continuing traversing any explored node.
+
+##Expansion
+
+The objective of the __Expansion__ step is to add a new unexplored child of
+the node determined by the previous _Selection_.
+
+If the node determined by the _Selection_ is an inner node instead of a
+leaf node then this node has a combination of explored and unexplored
+children. Either way an unexplored child shall be added for the
+coming _Simulation_ state. Only exception is that a leaf node has been
+reached representing a terminal node. In such a case no Expansion and
+Simulation is needed since a terminal node means that a end of game
+is implied at that node on the search path.
+
+Sometimes you will find implementations where multiple Expansions are
+done on the Selection node. This simply means a set of child nodes is
+added at once then.
+
+In UCThello exactly one node will be added unless a terminal node is
+reached and the list of remaining unexplored child nodes is
+determined before. To avoid any preferred order getting a node
+from the remaining nodes or dependency from any
+parameter or state the returned node is selected randomly.
+
 
 #References
 
