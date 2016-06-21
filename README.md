@@ -143,8 +143,8 @@ reached representing a terminal node. In such a case no Expansion and
 Simulation is needed since a terminal node means that a end of game
 is implied at that node on the search path.
 
-Sometimes you will find implementations where multiple Expansions are
-done on the Selection node. This simply means a set of child nodes is
+Sometimes you will find implementations where multiple Expansions take
+place on the Selection node. This simply means a set of child nodes is
 added at once then.
 
 In UCThello exactly one node will be added unless a terminal node is
@@ -154,6 +154,8 @@ from the set of remaining nodes or when a dependency from any
 parameter or state exists the returned node is selected randomly.
 
 ```
+/* Selection */
+...
 /* Expansion */
 if (node.unexamined.length > 0) {
   var j = Math.floor(Math.random() * node.unexamined.length);
@@ -165,6 +167,40 @@ if (node.unexamined.length > 0) {
 Terminal nodes do not have any child nodes. So it is sufficient to
 check for the unexamined.length in case a terminal node has been
 selected.
+
+##Simulation
+
+Now the objective of a __Simulation__ is to playout a possible scenario
+starting from the newly expanded search tree leaf node. Simulation is
+performed until end of game is reached.
+
+On each simulation step a player's action valid by the rules is done on the
+created variant board. The variant board is used as a complete copy of the
+current board and game state. This is to avoid changes to the board and game
+state while following the full search path and simulation steps.
+
+Instead of doing just a single playout alternatively several playouts could be
+started from the selected and expanded search tree leaf node. Idea behind
+this would be to save the run time needed for a possible choice of the same
+selection path in later iterations.
+
+In UCThello a single playout is performed per iteration. The number of MCTS
+algorithm iterations equals the number of simulations then.
+
+```
+var variantBoard = board.copy();
+/* Selection */
+...
+/* Expansion */
+...
+/* Simulation */
+var actions = variantBoard.getActions();
+while(actions.length > 0) {
+  variantBoard.doAction(actions[Math.floor(Math.random() * actions.length)]);
+  ...
+  actions = variantBoard.getActions();
+}
+```
 
 #References
 
