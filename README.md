@@ -59,7 +59,32 @@ The iterative MCTS algorithm is modelled to perform four main states typically c
 * _Simulation_, and
 * _Backpropagation_. See [Cha10] &amp; [CBSS08]
 
+In UCThello the related code fragment for this loop is close to
+
+```
+Uct.prototype.getActionInfo = function ( board, maxIterations, verbose ) {
+  var root = new UctNode(null, board, null);
+  for(var iterations=0; iterations<maxIterations; iterations+=1) {
+    var node = root;
+    var variantBoard = board.copy();
+    /* Selection */
+    ...
+    /* Expansion */
+    ...
+    /* Simulation */
+    ...
+    /* Backpropagation */
+    ...
+  }
+  return { action : root.mostVisitedChild().action };
+};
+```
+
+On a given board the most visited and therefore best information describing an action
+according to the rules performed by the current player shall be determined.
+
 ##Selection
+
 First step or state in an MCTS algorithm iteration is the __Selection__. _Objective
 of the Selection_ is to retrieve a path beginning at the root node towards a selected
 leaf node from the search tree. The Search Tree stays fixed inside the Selection state. It
@@ -91,8 +116,19 @@ explored siblings. Widening the search tree is then favored over deepening.
 Critics could be that randomness of Monte-Carlo methods is reduced if applied.
 
 UCThello implements to favor early _Selection_ of a traversed node on
-any unexplored child existing. Such an unexplored child is preferred
-over continuing traversing any explored node.
+any unexplored (or unexamined) child existing. Such an unexplored
+(or unexamined) child is preferred over continuing traversing any
+explored node.
+
+```
+var node = root;
+var variantBoard = board.copy();
+/* Selection */
+while (node.unexamined.length == 0 && node.children.length > 0) {
+  node = node.selectChild();
+  variantBoard.doAction(node.action);
+}
+```
 
 ##Expansion
 
@@ -113,16 +149,28 @@ added at once then.
 
 In UCThello exactly one node will be added unless a terminal node is
 reached and the list of remaining unexplored child nodes is
-determined before. To avoid any preferred order getting a node
-from the remaining nodes or dependency from any
-parameter or state the returned node is selected randomly.
+determined before. To avoid any preferred order when getting a node
+from the set of remaining nodes or when a dependency from any
+parameter or state exists the returned node is selected randomly.
 
+```
+/* Expansion */
+if (node.unexamined.length > 0) {
+  var j = Math.floor(Math.random() * node.unexamined.length);
+  variantBoard.doAction(node.unexamined[j]);
+  node = node.addChild(variantBoard, j);
+}
+```
+
+Terminal nodes do not have any child nodes. So it is sufficient to
+check for the unexamined.length in case a terminal node has been
+selected.
 
 #References
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
 * __[CBSS08]__ Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
-* Brian Rose, "[Othello. A Minute to Learn... A Lifetime to Master](http://www.ffothello.org/livres/othello-book-Brian-Rose.pdf)", 2005. 
+* Brian Rose, "[Othello. A Minute to Learn... A Lifetime to Master](http://www.ffothello.org/livres/othello-book-Brian-Rose.pdf)", 2005.
 
 # 3rd Party Libraries
 
