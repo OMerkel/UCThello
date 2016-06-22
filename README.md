@@ -26,7 +26,7 @@ computer player AI. The board game used for demonstration purposes of
 the UCT algorithm is close to a game named _Othello_ depending on
 selected options. In fact it can be played depending on your
 configuration following the official tournament rules of the
-WOF - World Othello Federation - if intended. Other rule settings
+WOF - World Othello Federation - if intended [WOF14]. Other rule settings
 to play variants are available, too. Playing strength is limited and
 thus kept at a moderate to quite strong level on purpose due to
 the target environment, device platform, and audience expectations.
@@ -229,6 +229,7 @@ while(actions.length > 0) {
 * __[KS06]__ Levente Kocsis, Csaba Szepesvári, "[Bandit based Monte-Carlo Planning](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.102.1296)", In European Conference on Machine Learning (ECML) 2006, Lecture Notes in Artificial Intelligence 4212, pp. 282–293, 2006.
 * __[CSUB06]__ Guillaume Chaslot, Jahn-Takeshi Saito, Jos W.H.M. Uiterwijk, Bruno Bouzy, H. Jaap van den Herik, "[Monte-Carlo Strategies for Computer Go](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.97.8924)", In Proceedings of the 18th Belgian-Dutch Conference on Artificial Intelligence, pp. 83–90, 2006.
 * Brian Rose, "[Othello. A Minute to Learn... A Lifetime to Master](http://www.ffothello.org/livres/othello-book-Brian-Rose.pdf)", 2005.
+* __[WOF14]__ World Othello Federation, "[Word Othello Championship Rules](http://www.worldothello.nu/sites/default/files/field/image/wocrules2014.pdf)", as valid for 39th World Othello Championship 2015, Cambridge, UK, October 2015.
 
 # 3rd Party Libraries
 
