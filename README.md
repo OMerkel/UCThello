@@ -27,9 +27,9 @@ the UCT algorithm is close to a game named _Othello_ depending on
 selected options. In fact it can be played depending on your
 configuration following the official tournament rules of the
 WOF - World Othello Federation - if intended. Other rule settings
-to play variants are available, too. Playing strength is kept
-at a moderate to quite strong level on purpose due to the target
-environment, device platform, and audience expectations.
+to play variants are available, too. Playing strength is limited and
+thus kept at a moderate to quite strong level on purpose due to
+the target environment, device platform, and audience expectations.
 This is done e.g. to avoid battery drains if full CPU and GPU
 core support would be implemented leading to bad user experience.
 Other possible but at least currently postponed improvements could
