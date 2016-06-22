@@ -18,7 +18,7 @@ Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI,
 2-player board game, deterministic game with perfect information,
 JavaScript, ECMAScript, W3C WebWorker_ 
 
-#Abstract
+# Abstract
 
 UCThello is a board game using Monte-Carlo Tree Search (MCTS) with
 UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the
@@ -27,10 +27,15 @@ the UCT algorithm is close to a game named _Othello_ depending on
 selected options. In fact it can be played depending on your
 configuration following the official tournament rules of the
 WOF - World Othello Federation - if intended [WOF14]. Other rule settings
-to play variants are available, too. Playing strength is limited and
-thus kept at a moderate to quite strong level on purpose due to
-the target environment, device platform, and audience expectations.
-This is done e.g. to avoid battery drains if full CPU and GPU
+to play variants are available, too.
+Per design decision the playing strength is limited for
+pleasure and fun level. Thus it is kept at a moderate to quite
+strong level on purpose due to the target environment, device
+platform, and audience expectations.
+This is done e.g. by limitation of the maximum AI response time and
+using a single execution thread for AI only plus just a
+second independent execution thread for a responsive user
+interface to avoid battery drains if full CPU and GPU
 core support would be implemented leading to bad user experience.
 Other possible but at least currently postponed improvements could
 be done by simple usage of a well-known and available game opening book.
@@ -43,7 +48,7 @@ either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created
 by Mollett is _The game of Annexation_, also called _Annex_ back in
 19th century.
 
-#Monte-Carlo Tree Search
+# Monte-Carlo Tree Search
 
 The __Monte-Carlo Tree Search__ (MCTS in short) represents an algorithms used to build a
 _Search Tree_ interatively by successively adding nodes according to traversing of
@@ -89,7 +94,7 @@ Uct.prototype.getActionInfo = function ( board, maxIterations, verbose ) {
 On a given board the most visited and therefore best information describing an action
 according to the rules performed by the current player shall be determined.
 
-##Selection
+## Selection
 
 First step or state in an MCTS algorithm iteration is the __Selection__. _Objective
 of the Selection_ is to retrieve a path beginning at the root node towards a selected
@@ -150,7 +155,7 @@ while (node.unexamined.length == 0 && node.children.length > 0) {
 }
 ```
 
-##Expansion
+## Expansion
 
 The objective of the __Expansion__ step is to add a new unexplored child of
 the node determined by the previous _Selection_.
@@ -188,7 +193,7 @@ Terminal nodes do not have any child nodes. So it is sufficient to
 check for the unexamined.length in case a terminal node has been
 selected.
 
-##Simulation
+## Simulation
 
 Now the objective of a __Simulation__ is to playout a possible scenario
 starting from the newly expanded search tree leaf node. Simulation is
@@ -222,7 +227,7 @@ while(actions.length > 0) {
 }
 ```
 
-#References
+# References
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
 * __[CBSS08]__ Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
@@ -236,14 +241,16 @@ while(actions.length > 0) {
 * jQuery: MIT licensed, https://github.com/jquery/jquery
 * jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
 
-#Links
+# Links
 
 * Association for the Advancement of Artificial Intelligence, http://www.aaai.org
 * HTML Living Standard, Web Workers, https://html.spec.whatwg.org
 * The Othello Museum, http://www.beppi.it/public/OthelloMuseum/pages/history.php
 
-##Othello Organizations
-Mind that UCThello follows (most) official tournament rules of the listed organizations depending on your selected options. Still UCThello is independent development from any work of these organizations.
+## Othello Organizations
+Mind that UCThello follows (most) official tournament rules of the listed
+organizations depending on your selected options. Still UCThello is
+independent development from any work of these organizations.
 
 * World Othello Federation, http://www.worldothello.org
 * Australian Othello Federation, http://www.othello.asn.au
@@ -255,7 +262,7 @@ Mind that UCThello follows (most) official tournament rules of the listed organi
 * Othello Club Deutschland, http://www.othello-club.de.vu
 * United States Othello Association (USOA), http://www.usothello.org
 
-#Contributors / Authors
+# Contributors / Authors
 
 <table>
   <tr>
