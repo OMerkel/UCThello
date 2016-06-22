@@ -31,11 +31,11 @@ to play variants are available, too. Playing strength is kept
 at a moderate to quite strong level due to the target environment,
 device platform, and audience expectations. This is done e.g. to
 avoid battery drains if full CPU and GPU core support would be
-implemented leading to bad user experience. Other improvements
-could be done by simple usage of a well-known and available
-game opening book. Although such simple modifications could
-improve the playing strength these features are not implemented
-in the current version yet.
+implemented leading to bad user experience. Other possible but
+at least currently postponed improvements could be done by
+simple usage of a well-known and available game opening book.
+Although such simple modifications could improve the playing strength
+these features are not implemented in the current version yet.
 
 _Othello_ is a derivative of the board game _Reversi_ which can be
 played by UCThello as well. _Reversi_ is claimed to be invented by
