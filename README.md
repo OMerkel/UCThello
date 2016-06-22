@@ -108,6 +108,17 @@ relatively rare traversed nodes. Nodes traversed in a low amount simply
 reflects a low reliability or statistical confidence. The border between
 exploit and explore is often seen as being soft and fluent.
 
+Thus a selection of a child node to traverse next at each level of the already
+build search tree path is usually based on a quality value of the visited
+nodes in earlier iterations.
+An optimal _Selection Strategy_ to best support the objective is unknown. One
+statistical approach called _Upper Confidence Bounds_ (UCB) algorithm uses
+a logarithm based formula on collected quality values correlated to the
+nodes on the search path if applied to MCTS. The combination of MCTS and UCB
+called UCT (short for _UCB applied to trees_) is credited to [KS06]. Other
+approaches or additional supporting ideas for a _Selection Strategy_ are
+presented and discussed e.g. in [CSUB06].
+
 Besides the Selection Strategy in search path branch Selection an additional
 aspect is seen. To avoid a risk that any high quality node is unvisited that
 is located near the rood node already. To reach such a design goal a possible
@@ -115,8 +126,11 @@ solution is to favor traversing any unexplored child node over following
 explored siblings. Widening the search tree is then favored over deepening.
 Critics could be that randomness of Monte-Carlo methods is reduced if applied.
 
-UCThello implements to favor early _Selection_ of a traversed node on
-any unexplored (or unexamined) child existing. Such an unexplored
+In UCThello the select child step implements the UCT algorithm. The UCB
+related code is part of the _UctNode.prototype.selectChild_ function.
+
+Additionally UCThello implements to favor early _Selection_ of a traversed
+node on any unexplored (or unexamined) child existing. Such an unexplored
 (or unexamined) child is preferred over continuing traversing any
 explored node.
 
@@ -206,6 +220,8 @@ while(actions.length > 0) {
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
 * __[CBSS08]__ Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
+* __[KS06]__ Levente Kocsis, Csaba Szepesvári, "[Bandit based Monte-Carlo Planning](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.102.1296)", In European Conference on Machine Learning (ECML) 2006, Lecture Notes in Artificial Intelligence 4212, pp. 282–293, 2006.
+* __[CSUB06]__ Guillaume Chaslot, Jahn-Takeshi Saito, Jos W.H.M. Uiterwijk, Bruno Bouzy, H. Jaap van den Herik, "[Monte-Carlo Strategies for Computer Go](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.97.8924)", In Proceedings of the 18th Belgian-Dutch Conference on Artificial Intelligence, pp. 83–90, 2006.
 * Brian Rose, "[Othello. A Minute to Learn... A Lifetime to Master](http://www.ffothello.org/livres/othello-book-Brian-Rose.pdf)", 2005.
 
 # 3rd Party Libraries
