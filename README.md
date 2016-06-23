@@ -227,6 +227,25 @@ while(actions.length > 0) {
 }
 ```
 
+## Backpropagation
+
+```
+var node = root;
+var variantBoard = board.copy();
+/* Selection */
+...
+/* Expansion */
+...
+/* Simulation */
+...
+/* Backpropagation */
+var result = variantBoard.getResult();
+while(node) {
+  node.update(result);
+  node = node.parentNode;
+}
+```
+
 # References
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
