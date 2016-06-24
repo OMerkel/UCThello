@@ -199,7 +199,11 @@ Now the objective of a __Simulation__ is to playout a possible scenario
 starting from the newly expanded search tree leaf node. Simulation is
 performed until end of game is reached.
 
-On each simulation step a player's action valid by the rules is done on the
+Mind the playout does not modify the expanded search tree leaf node. The fixed
+leaf node - respectively the correlated game state - is used as the base for
+the simulation only.
+
+On each simulation step a player's action valid by the rules is performed on the
 created variant board. The variant board is used as a complete copy of the
 current board and game state. This is to avoid changes to the board and game
 state while following the full search path and simulation steps.
@@ -228,6 +232,14 @@ while(actions.length > 0) {
 ```
 
 ## Backpropagation
+
+Objective of the __Backpropagation__ is to update the statistics of all nodes
+along the search tree path in reverse order until the root node is reached.
+The Simulation did not perform any changes on the search tree path. Since the
+search tree path is unchanged this means the eventually played or pedicted
+result on the playout can be used to update statistics starting at the
+search tree path leaf node via the parent nodes until the root node is
+reached.
 
 ```
 var node = root;
