@@ -236,7 +236,7 @@ while(actions.length > 0) {
 Objective of the __Backpropagation__ is to update the statistics of all nodes
 along the search tree path in reverse order until the root node is reached.
 The Simulation did not perform any changes on the search tree path. Since the
-search tree path is unchanged this means the eventually played or pedicted
+search tree path is unchanged this means the eventually played or predicted
 result on the playout can be used to update statistics starting at the
 search tree path leaf node via the parent nodes until the root node is
 reached.
