@@ -258,6 +258,27 @@ while(node) {
 }
 ```
 
+In UCThello the UCT AI player does not maximize for the
+amount of discs of own color on board.
+Instead it analyzes the end of game situation just for any
+result being a win. The call variantBoard.getResult()
+returns an array of length two.
+The two values returned stand for the game result of 
+the players in terms of win or loss. The winning player
+gets a full point while his opponent scores zero points.
+Meaning the result is either [ 1, 0 ] or [ 0, 1 ].
+A draw or stalemate situation is represented as [ 0.5, 0.5 ].
+Meaning a draw is better than a loss but shall be interpreted
+as half a win for both players.
+
+The statistics for a node is updated by node.update(result).
+Mind the search tree node is representing a move of the active
+player according to the rules. The update picks the active
+player's end of game result from the result array and adds it
+to a statistics value representing the total amount of wins
+found traversing the search tree node over all MCTS iterations.
+Additionally the amount of visits for the node is increased.
+
 # References
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
