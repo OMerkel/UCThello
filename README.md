@@ -267,9 +267,9 @@ The two values returned stand for the game result of
 the players in terms of win or loss. The winning player
 gets a full point while his opponent scores zero points.
 Meaning the result is either [ 1, 0 ] or [ 0, 1 ].
-A draw or stalemate situation is represented as [ 0.5, 0.5 ].
-Meaning a draw is better than a loss but shall be interpreted
-as half a win for both players.
+A draw or stalemate situation is represented as an array
+[ 0.5, 0.5 ]. Meaning a draw is better than a loss but
+shall be interpreted as half a win for both players.
 
 The statistics for a node is updated by node.update(result).
 Mind the search tree node is representing a move of the active
