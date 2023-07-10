@@ -39,7 +39,7 @@ Hmi.prototype.resize = function() {
   var wh = window.innerHeight-offset_h;
   var ww = window.innerWidth-offset_h;
   var tmp = wh<ww ? wh : ww;
-  var size = tmp / 10;
+  var size = tmp / 8.6;
   var annotation = $('.annotation');
   annotation.filter('.column').css( { width: size + 'px', } );
   annotation.filter('.row').css( { height: size + 'px', } );
