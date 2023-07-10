@@ -35,7 +35,7 @@ function Hmi() {
 
 Hmi.prototype.resize = function() {
   var $window = $(window);
-  var offset_h=72;
+  var offset_h=138;
   var wh = window.innerHeight-offset_h;
   var ww = window.innerWidth-offset_h;
   var tmp = wh<ww ? wh : ww;
@@ -49,16 +49,6 @@ Hmi.prototype.resize = function() {
     'width': size + 'px',
     'height': size + 'px',
   } );
-  var minSize = 38;
-  size = size < minSize ? minSize : size;
-  $('#customMenu').css({
-    'width': size+'px', 'height': size+'px',
-    'background-size': size+'px ' + size+'px',
-  });
-  $('#customBackAbout').css({
-    'width': size+'px', 'height': size+'px',
-    'background-size': size+'px ' + size+'px',
-  });
 };
 
 Hmi.prototype.mustPass = function(board) {
