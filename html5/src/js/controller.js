@@ -46,7 +46,7 @@ Controller.prototype.processHmiRequest = function( eventReceived ) {
       this.updateSettings( data );
       var actionInfo = 1 == this.board.ply ?
         this.random.getActionInfo( this.board, false ) :
-        this.uct.getActionInfo( this.board, 12000, 4000, false );
+        this.uct.getActionInfo( this.board, 32000, 8000, false );
       this.board.doAction( actionInfo.action );
       this.draw( data, actionInfo );
       break;
