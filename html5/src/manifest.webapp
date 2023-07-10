@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "name": "UCThello",
   "description": "MCTS UCT driven board game",
   "launch_path": "/index.html",

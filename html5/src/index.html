@@ -13,7 +13,7 @@
   <meta name='DC.rights' content="
 See file named LICENSE being part of the repository.
 
-Copyright (c) 2016
+Copyright (c) 2016, 2023
 @author Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de.
 All rights reserved.
 
@@ -23,7 +23,7 @@ All source code also including code parts written in HMTL, Javascript, CSS is un
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
+Copyright (c) 2016, 2023 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the &quot;Software&quot;), to deal in
@@ -52,202 +52,99 @@ If not otherwise stated all graphics (independent of its format) are licensed un
   <link rel='apple-touch-icon' href='img/icons/ucthello128.png' />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
     name='viewport' />
-  <link rel='stylesheet' type='text/css' href='thirdparty/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css' />
+  <link rel='stylesheet' type='text/css' href='thirdparty/jquery-ui-1.13.2/jquery-ui.css' />
   <link rel='stylesheet' type='text/css' href='css/index.css' />
-  <script src='thirdparty/jquery-2.2.4.js' type='text/javascript'></script> 
-  <script src='thirdparty/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js' type='text/javascript'></script>
-  <script src='js/hmi.js' type='text/javascript' defer></script> 
+  <script src='thirdparty/jquery-3.7.0.js' type='text/javascript'></script> 
+  <script src='thirdparty/jquery-ui-1.13.2/jquery-ui.js' type='text/javascript'></script>
+  <script src='js/hmi.js' type='text/javascript' defer></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+    $( "input" ).checkboxradio();
+    $( "#accordion" ).accordion({
+      heightStyle: "content"
+    });
+  } );
+  </script>
 </head>
 <body>
-<div data-role='page' data-theme='b' id='game-page' class='mybackground'>
-  <div data-role='header' data-position='fixed'>
-    <center id='myheader'>UCThello</center>
-    <a href='#left-panel' id='customMenu' class='customMenu'
-      data-icon='custom' data-iconpos='notext'>Menu</a>
-  </div><!-- /header -->
-  <div role='main' class='mycontent ui-content'>
-    <div id='game-region'>
-      <noscript>
-        <p>This HTML5 application depends on enabled Javascript capabilities in your browser.</p>
-        <p>Please consider enabling Javascript if disabled through settings.</p>
-      </noscript>
-      <div id='panel'>
-        <center>
-        <table class='outerboard no-highlight disable-select' cellspacing='0px' cellpadding='0px'>
-        <tbody>
-          <tr><td class='boardframe'>&nbsp;</td>
-            <td class='annotation column'>a</td>
-            <td class='annotation column'>b</td>
-            <td class='annotation column'>c</td>
-            <td class='annotation column'>d</td>
-            <td class='annotation column'>e</td>
-            <td class='annotation column'>f</td>
-            <td class='annotation column'>g</td>
-            <td class='annotation column'>h</td>
-            <!-- td class='boardframe' rowspan='10'>&nbsp;</td -->
-            <td class='boardframe'>&nbsp;</td>
-          </tr>
-          <tr><td class='annotation row'>1</td><td colspan='8' rowspan='8'>
-            <table class='innerboard no-highlight disable-select' cellspacing='0px' cellpadding='0px'>
-            <tbody id='innerboard'>
-            </tbody>
-            </table>
-          </td><td class='annotation row'><div class='upsidedown'>1</div></td></tr>
-          <tr><td class='annotation row'>2</td>
-          <td class='annotation row'><div class='upsidedown'>2</div></td></tr>
-          <tr><td class='annotation row'>3</td>
-          <td class='annotation row'><div class='upsidedown'>3</div></td></tr>
-          <tr><td class='annotation row'>4</td>
-          <td class='annotation row'><div class='upsidedown'>4</div></td></tr>
-          <tr><td class='annotation row'>5</td>
-          <td class='annotation row'><div class='upsidedown'>5</div></td></tr>
-          <tr><td class='annotation row'>6</td>
-          <td class='annotation row'><div class='upsidedown'>6</div></td></tr>
-          <tr><td class='annotation row'>7</td>
-          <td class='annotation row'><div class='upsidedown'>7</div></td></tr>
-          <tr><td class='annotation row'>8</td>
-          <td class='annotation row'><div class='upsidedown'>8</div></td></tr>
-          <tr><!-- td class='boardframe' colspan='9'>&nbsp;</td -->
+<div id='game-page'>
+  <noscript>
+    <p>This HTML5 application depends on enabled Javascript capabilities in your browser.</p>
+    <p>Please consider enabling Javascript if disabled through settings.</p>
+  </noscript>
+<div id='tabs'>
+  <ul>
+    <li><a href='#tabs-board'>Board</a></li>
+    <li><a href='#tabs-options'>Options&#8230;</a></li>
+    <li><a href='#tabs-about'>About&#8230;</a></li>
+  </ul>
+  <div id='tabs-board'>
+    <center>
+      <table class='outerboard no-highlight disable-select' cellspacing='0px' cellpadding='0px'>
+      <tbody>
+        <tr><td class='boardframe'>&nbsp;</td>
+          <td class='annotation column'>a</td>
+          <td class='annotation column'>b</td>
+          <td class='annotation column'>c</td>
+          <td class='annotation column'>d</td>
+          <td class='annotation column'>e</td>
+          <td class='annotation column'>f</td>
+          <td class='annotation column'>g</td>
+          <td class='annotation column'>h</td>
+          <!-- td class='boardframe' rowspan='10'>&nbsp;</td -->
           <td class='boardframe'>&nbsp;</td>
-            <td class='annotation column'>
-              <div class='upsidedown'>a</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>b</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>c</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>d</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>e</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>f</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>g</div></td>
-            <td class='annotation column'>
-              <div class='upsidedown'>h</div></td>
-          </tr>
-        </tbody>
-        </table>
-        <div id='status'>
-        </div>
-        </center>
+        </tr>
+        <tr><td class='annotation row'>1</td><td colspan='8' rowspan='8'>
+          <table class='innerboard no-highlight disable-select' cellspacing='0px' cellpadding='0px'>
+          <tbody id='innerboard'>
+          </tbody>
+          </table>
+        </td><td class='annotation row'><div class='upsidedown'>1</div></td></tr>
+        <tr><td class='annotation row'>2</td>
+        <td class='annotation row'><div class='upsidedown'>2</div></td></tr>
+        <tr><td class='annotation row'>3</td>
+        <td class='annotation row'><div class='upsidedown'>3</div></td></tr>
+        <tr><td class='annotation row'>4</td>
+        <td class='annotation row'><div class='upsidedown'>4</div></td></tr>
+        <tr><td class='annotation row'>5</td>
+        <td class='annotation row'><div class='upsidedown'>5</div></td></tr>
+        <tr><td class='annotation row'>6</td>
+        <td class='annotation row'><div class='upsidedown'>6</div></td></tr>
+        <tr><td class='annotation row'>7</td>
+        <td class='annotation row'><div class='upsidedown'>7</div></td></tr>
+        <tr><td class='annotation row'>8</td>
+        <td class='annotation row'><div class='upsidedown'>8</div></td></tr>
+        <tr><!-- td class='boardframe' colspan='9'>&nbsp;</td -->
+        <td class='boardframe'>&nbsp;</td>
+          <td class='annotation column'>
+            <div class='upsidedown'>a</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>b</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>c</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>d</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>e</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>f</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>g</div></td>
+          <td class='annotation column'>
+            <div class='upsidedown'>h</div></td>
+        </tr>
+      </tbody>
+      </table>
+      <div id='status'></div>
+      <div>
+        <br />
+        <a id='new' class='ui-button ui-widget ui-corner-all'>New</a>
       </div>
-    </div>
-  </div><!-- /content -->
-  <div data-role='panel' id='left-panel' data-position='left'
-    data-display='overlay' data-theme='b'>
-    <ul data-role='listview' data-theme='b' data-divider-theme='d'
-      data-icon='false' data-global-nav='demos' class='jqm-list'>
-      <li data-icon='back' data-rel='close'><a href='#'>Back</a></li>
-      <li data-role='list-divider'>&nbsp;</li>
-      <li data-icon='star'><a id='new'>New</a></li>
-      <li data-role='list-divider'>&nbsp;</li>
-      <li data-icon='action'><a href='#rules-page' data-rel='page'
-        data-transition='pop'>Rules&#8230;</a></li>
-      <li data-icon='grid'><a href='#options-menu' data-rel='page'
-        data-transition='slideup'>Options&#8230;</a></li>
-      <li data-icon='info'><a href='#about-page' data-rel='page'
-        data-transition='pop'>About&#8230;</a></li>
-    </ul>
-  </div><!-- /panel -->
-</div><!-- /page -->
-<div data-role='page' data-theme='b' id='rules-page'>
-  <div data-role='header'>
-    <a href='#' data-rel='back' id='customBackRules'
-      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all'>Back</a>
-    <h4>Rules</h4>
-  </div><!-- /header -->
-  <div role='main' class='ui-content'>
-    <br />
-    <p>Mind that <em>UCThello</em> has an option menu, too.
-      Selection of specific options might alter the basic rules
-      described as follows. Besides rule options you can find
-      additional options like showing or alternatively hiding
-      markers on available fields a player is allowed to
-      set own game pieces on own turn. Please make sure the
-      current game options are chosen as intended by both players
-      prior to game start.</p>
-    <figure class='diagram' style='float: right;'>
-      <img src='img/rules_sog.png' />
-      <figcaption>Start of game. Black is allowed to set
-        onto either c4, or d3 flipping d4, or e6, or f5
-        flipping e5.</figcaption>
-    </figure>
-    <p>The game is played in turns by two players namely Black and White.
-      <b>Starting position</b> shows pieces on the central four fields.
-      Initially Black's pieces are on d5 and e4 (near-left-to-far-right
-      diagonal) while White's pieces are on e5 and d4
-      (near-right-to-far-left diagonal). Initial player is Black.</p>
-    <br clear='all' />
-    <p>A <b>player's turn</b> consists in</p>
-    <ul>
-      <li>setting a game piece of own color on an <em>allowed</em>
-        field followed by</li>
-      <li>flipping specific pieces from opponent's color into own color
-        by replacing these according to the rules.</li>
-    </ul>
-    <p>The action of placing a game piece onto a vacant field is called a <b>set</b>.
-      A player must <b>pass his turn</b> if no set is available.</p>
-    <figure class='diagram' style='float: right;'>
-      <img src='img/rules_sample_1.png' />
-      <figcaption>The four legal available sets for White in this position.
-       If setting c7 all three black pieces in a row get flipped. If setting
-       d6 three black pieces from three different directions in total get
-       flipped. b4 and f4 can only flipp two of Black's pieces each. White
-       may not pass. So where to set the white piece here?</figcaption>
-    </figure>
-    <p><b>Setting a game piece</b> of own color on an empty vacant field is
-      considered <em>legal or allowed</em> if in at least one direction
-      (horizontally, vertically, diagonally) exactly this game piece
-      and another piece of own color already on board surrounds game pieces
-      of opponent's color in an unbroken row. Such that two own game pieces
-      form a bracket around the opponent's unbroken row of game pieces.
-      If such bracketing by the newly set game piece takes place in
-      multiple directions at once then flipping the opponent's pieces into own
-      game pieces is performed in all these affected directions.</p>
-    <br clear='all' />
-    <figure class='diagram' style='float: left;'>
-      <img src='img/rules_sample_1-d6.png' />
-      <figcaption>Please assume the decision was setting
-       d6 then three black pieces from three different directions
-       got flipped as shown in total.</figcaption>
-    </figure>
-    <br clear='all' /><br />
-    <figure class='diagram' style='float: left;'>
-      <img src='img/rules_sample_2.png' />
-      <figcaption>Another board situation with multiple available sets
-        for Black's turn. If setting onto a6 by Black then&#8230;</figcaption>
-    </figure>
-    <br clear='all' /><br />
-    <figure class='diagram' style='float: left;'>
-      <img src='img/rules_sample_2-a6.png' />
-      <figcaption>If choice is setting onto a6 by Black then just b6 gets flipped
-        but not d6 and e6 since c6 breaks the row here although there is
-        a black piece on f6.</figcaption>
-    </figure>
-    <br clear='all' />
-    <p><b>Game is over</b> if either both players must pass with no
-      available sets left or if there is no remaining empty field on the
-      board. The player having the most pieces of own color on the board
-      does win the game then.</p>
-    <p>Proposal is to offer a revanche or revenge match by the winner. As an
-      option the weaker opponent might choose the game options for the next
-      round.</p>
-    <p>Have fun and enjoy the game&#8230;</p>
-    <a href='#' data-role='button' data-icon='back'
-      data-rel='back'>Back</a>
-  </div><!-- /content -->
-</div><!-- /page -->
-
-<div data-role='page' data-theme='b' id='options-menu'>
-  <div data-role='header'>
-    <h1><small>Options</small></h1>
-    <a href='#' data-rel='back' id='customBackOptions'
-      class='customBack ui-btn ui-icon-custom ui-btn-icon-left ui-btn-icon-notext ui-corner-all'>Close</a>
-  </div><!-- /header -->
-  <div data-role='content'>
-    <br />
-    <form>
+    </center>
+  </div>
+  <div id='tabs-options'>
+    <form action="#">
       <i>Mind: All selections will be applied on next set or new game.</i>
       <fieldset data-role='controlgroup'>
         <legend>Black is&#8230;</legend>
@@ -288,109 +185,176 @@ If not otherwise stated all graphics (independent of its format) are licensed un
         <label for='hideavailablemove'>hidden</label>
       </fieldset>
     </form>
-    <a href='#' data-role='button' data-icon='check'
-      data-rel='back' data-theme='c'>Ok</a>
-  </div><!-- /content -->
-</div><!-- /page -->
+  </div><!-- /tab-options -->
+  <div id='tabs-about'>
+    <div>
+      <div id='accordion'>
+        <h3>Rules</h3>
+        <div>
+          <p>Mind that <em>UCThello</em> has an option menu, too.
+            Selection of specific options might alter the basic rules
+            described as follows. Besides rule options you can find
+            additional options like showing or alternatively hiding
+            markers on available fields a player is allowed to
+            set own game pieces on own turn. Please make sure the
+            current game options are chosen as intended by both players
+            prior to game start.</p>
+          <figure class='diagram' style='float: right;'>
+            <img src='img/rules_sog.png' />
+            <figcaption>Start of game. Black is allowed to set
+              onto either c4, or d3 flipping d4, or e6, or f5
+              flipping e5.</figcaption>
+          </figure>
+          <p>The game is played in turns by two players namely Black and White.
+            <b>Starting position</b> shows pieces on the central four fields.
+            Initially Black's pieces are on d5 and e4 (near-left-to-far-right
+            diagonal) while White's pieces are on e5 and d4
+            (near-right-to-far-left diagonal). Initial player is Black.</p>
+          <br clear='all' />
+          <p>A <b>player's turn</b> consists in</p>
+          <ul>
+            <li>setting a game piece of own color on an <em>allowed</em>
+              field followed by</li>
+            <li>flipping specific pieces from opponent's color into own color
+              by replacing these according to the rules.</li>
+          </ul>
+          <p>The action of placing a game piece onto a vacant field is called a <b>set</b>.
+            A player must <b>pass his turn</b> if no set is available.</p>
+          <figure class='diagram' style='float: right;'>
+            <img src='img/rules_sample_1.png' />
+            <figcaption>The four legal available sets for White in this position.
+             If setting c7 all three black pieces in a row get flipped. If setting
+             d6 three black pieces from three different directions in total get
+             flipped. b4 and f4 can only flipp two of Black's pieces each. White
+             may not pass. So where to set the white piece here?</figcaption>
+          </figure>
+          <p><b>Setting a game piece</b> of own color on an empty vacant field is
+            considered <em>legal or allowed</em> if in at least one direction
+            (horizontally, vertically, diagonally) exactly this game piece
+            and another piece of own color already on board surrounds game pieces
+            of opponent's color in an unbroken row. Such that two own game pieces
+            form a bracket around the opponent's unbroken row of game pieces.
+            If such bracketing by the newly set game piece takes place in
+            multiple directions at once then flipping the opponent's pieces into own
+            game pieces is performed in all these affected directions.</p>
+          <br clear='all' />
+          <figure class='diagram' style='float: left;'>
+            <img src='img/rules_sample_1-d6.png' />
+            <figcaption>Please assume the decision was setting
+             d6 then three black pieces from three different directions
+             got flipped as shown in total.</figcaption>
+          </figure>
+          <br clear='all' /><br />
+          <figure class='diagram' style='float: left;'>
+            <img src='img/rules_sample_2.png' />
+            <figcaption>Another board situation with multiple available sets
+              for Black's turn. If setting onto a6 by Black then&#8230;</figcaption>
+          </figure>
+          <br clear='all' /><br />
+          <figure class='diagram' style='float: left;'>
+            <img src='img/rules_sample_2-a6.png' />
+            <figcaption>If choice is setting onto a6 by Black then just b6 gets flipped
+              but not d6 and e6 since c6 breaks the row here although there is
+              a black piece on f6.</figcaption>
+          </figure>
+          <br clear='all' />
+          <p><b>Game is over</b> if either both players must pass with no
+            available sets left or if there is no remaining empty field on the
+            board. The player having the most pieces of own color on the board
+            does win the game then.</p>
+          <p>Proposal is to offer a revanche or revenge match by the winner. As an
+            option the weaker opponent might choose the game options for the next
+            round.</p>
+          <p>Have fun and enjoy the game&#8230;</p>
+        </div>
+        <h3>Legal</h3>
+        <div>
+          <figure class='author' style='float: right;'>
+            <img src='img/oliver_moher-150812.jpg' />
+            <figcaption>Oliver Merkel, Cliffs of Moher, Ireland, <a rel='license'
+              href='http://creativecommons.org/licenses/by-nc-nd/4.0/'
+              target='_blank'>cc-by-nc-nd 4.0</a>.</figcaption>
+          </figure>
+          <br />
+          <p>Copyright (c) 2016, 2023<br />
+          <em>@author</em> Oliver Merkel, Merkel(dot) Oliver(at) web(dot) de.<br />
+          All rights reserved.<br />
+          Logos, brands, and trademarks belong to their respective owners.</p>
+          <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
+          <h4>The MIT License (MIT)</h4>
+          <p>Copyright (c) 2016, 2023 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
 
-<div data-role='page' data-theme='b' id='about-page'>
-  <div data-role='header'>
-    <a href='#' data-rel='back' id='customBackAbout'
-      class='customBack ui-btn ui-icon-custom ui-btn-icon-right ui-btn-icon-notext ui-corner-all'>Back</a>
-    <h4>About UCThello</h4>
-  </div><!-- /header -->
-  <div role='main' class='ui-content'>
-    <figure class='author' style='float: right;'>
-      <img src='img/oliver_moher-150812.jpg' />
-      <figcaption>Oliver Merkel, Cliffs of Moher, Ireland, <a rel='license'
-        href='http://creativecommons.org/licenses/by-nc-nd/4.0/'
-        target='_blank'>cc-by-nc-nd 4.0</a>.</figcaption>
-    </figure>
-    <br />
-    <h3>Legal</h3>
-    <p>Copyright (c) 2016<br />
-    <em>@author</em> Oliver Merkel, Merkel(dot) Oliver(at) web(dot) de.<br />
-    All rights reserved.<br />
-    Logos, brands, and trademarks belong to their respective owners.</p>
-    <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
-    <h4>The MIT License (MIT)</h4>
-    <p>Copyright (c) 2016 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
+          <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+          this software and associated documentation files (the &quot;Software&quot;), to deal in
+          the Software without restriction, including without limitation the rights to
+          use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+          the Software, and to permit persons to whom the Software is furnished to do so,
+          subject to the following conditions:</p>
 
-    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-    this software and associated documentation files (the &quot;Software&quot;), to deal in
-    the Software without restriction, including without limitation the rights to
-    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-    the Software, and to permit persons to whom the Software is furnished to do so,
-    subject to the following conditions:</p>
+          <p>The above copyright notice and this permission notice shall be included in all
+          copies or substantial portions of the Software.</p>
 
-    <p>The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.</p>
+          <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+          FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+          COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+          IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+          CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
-    <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-
-    <p>If not otherwise stated all graphics (independent of its format) are licensed under
-      <br /><a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
-      target='_blank'><img alt='Creative Commons License' style='border-width:0'
-      src='img/icons/cc_by_nc_sa.png' /></a><br />Images are licensed under a
-      <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
-      target='_blank'>Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-      International License</a>.
-    </p>
-    <div data-role='collapsible-set' data-theme='c' data-content-theme='d'
-      data-iconpos='right' data-collapsed-icon='arrow-l' data-expanded-icon='arrow-d'>
-    <div data-role='collapsible'>
-      <h4>UCThello Principles and Concepts</h4>
-      <p><em>UCThello</em> implements a two-player deterministic board game.</p>
-      <p>UCThello is a board game using Monte-Carlo Tree Search (MCTS) with UCB
-        (Upper Confidence Bounds) applied to trees (UCT in short) for the computer
-        player AI. The board game used for demonstration purposes of the UCT algorithm
-        is close to a game named Othello depending on selected options. In fact it
-        can be played depending on your configuration following the official
-        tournament rules of the WOF - World Othello Federation - if intended.
-        Other rule settings to play variants are available, too.</p>
-      <p>The basic concept of performing a player's turn like in UCThello can
-        be found in 19th century board games or possibly earlier like in Annex,
-        The game of Annexation, Reversi and quite modern successors like Othello
-        or variants like the two-or-more player game Rolit.
-        Depending on the reference one might find contradicting creators for the basic
-        concept and idea of flipping multicolored game pieces initiated by setting a
-        game piece of own color following a bracketting rule. Unsure but often cited
-        for Reversi you will find Lewis Waterman or John W. Mollett.
-        So a specific underlying game mechanics belongs to the public domain due to its
-        age and unknown creator. For own creations mind that trademarks do exist for
-        some of the games or possibly patents might exist for technical/mechanical
-        implementations.</p>
-    </div><!-- collapsible -->
-    <div data-role='collapsible'>
-      <h4>Third Party Code Licenses</h4>
-      <p>This <b>UCThello</b> implementation uses unmodified
-      independent code libraries provided by <em>third parties</em>.
-      Since their licenses might vary the corresponding information is
-      <em>externally linked</em> below. Thus <em>these external links</em>
-      will enable you to reproduce any copyright notice,
-      any related list of conditions, disclaimers, and especially
-      the copyright holders and authors of the corresponding third
-      party functionality.</p>
-      <a href='https://github.com/jquery/jquery' data-role='button' data-theme='c'
-        rel='external' target='_blank' type='text/html'
-        title='jQuery - Repository'>
-        <img src='thirdparty/jquery-favicon.ico' width='16' height='16' />
-        jQuery: MIT</a>
-      <a href='https://github.com/jquery/jquery-mobile' data-role='button' data-theme='c'
-        rel='external' target='_blank' type='text/html'
-        title='jQuery Mobile - Repository'>
-        <img src='thirdparty/jquery.mobile-1.4.5/demos/favicon.ico' width='16' height='16' />
-        jQuery Mobile: MIT</a>
-    </div><!-- collapsible -->
-    </div><!-- collapsible-set -->
-    <a href='#' data-role='button' data-icon='back'
-      data-rel='back'>Back</a>
-  </div><!-- /content -->
-</div><!-- /page -->
+          <p>If not otherwise stated all graphics (independent of its format) are licensed under
+            <br /><a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
+            target='_blank'><img alt='Creative Commons License' style='border-width:0'
+            src='img/icons/cc_by_nc_sa.png' /></a><br />Images are licensed under a
+            <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0'
+            target='_blank'>Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+            International License</a>.
+          </p>
+        </div>
+      <h3>UCThello Principles and Concepts</h3>
+      <div>
+        <p><em>UCThello</em> implements a two-player deterministic board game.</p>
+        <p>UCThello is a board game using Monte-Carlo Tree Search (MCTS) with UCB
+          (Upper Confidence Bounds) applied to trees (UCT in short) for the computer
+          player AI. The board game used for demonstration purposes of the UCT algorithm
+          is close to a game named Othello depending on selected options. In fact it
+          can be played depending on your configuration following the official
+          tournament rules of the WOF - World Othello Federation - if intended.
+          Other rule settings to play variants are available, too.</p>
+        <p>The basic concept of performing a player's turn like in UCThello can
+          be found in 19th century board games or possibly earlier like in Annex,
+          The game of Annexation, Reversi and quite modern successors like Othello
+          or variants like the two-or-more player game Rolit.
+          Depending on the reference one might find contradicting creators for the basic
+          concept and idea of flipping multicolored game pieces initiated by setting a
+          game piece of own color following a bracketting rule. Unsure but often cited
+          for Reversi you will find Lewis Waterman or John W. Mollett.
+          So a specific underlying game mechanics belongs to the public domain due to its
+          age and unknown creator. For own creations mind that trademarks do exist for
+          some of the games or possibly patents might exist for technical/mechanical
+          implementations.</p>
+      </div>
+      <h3>Third Party Code Licenses</h3>
+      <div>
+        <p>This <b>UCThello</b> implementation uses unmodified
+        independent code libraries provided by <em>third parties</em>.
+        Since their licenses might vary the corresponding information is
+        <em>externally linked</em> below. Thus <em>these external links</em>
+        will enable you to reproduce any copyright notice,
+        any related list of conditions, disclaimers, and especially
+        the copyright holders and authors of the corresponding third
+        party functionality.</p>
+        <a href='https://github.com/jquery/jquery' class='ui-button ui-widget ui-corner-all' target='_blank' type='text/html'
+          title='jQuery - Repository'>
+          <img src='thirdparty/jquery-favicon.ico' width='16' height='16' />
+          jQuery: MIT</a>&nbsp;
+        <a href='https://github.com/jquery/jquery-ui' class='ui-button ui-widget ui-corner-all' target='_blank' type='text/html'
+          title='jQuery UI - Repository'>
+          <img src='thirdparty/jquery-ui-1.13.2/jquery-ui-favicon.ico' width='16' height='16' />
+          jQuery UI: MIT</a>
+      </div>
+    </div>
+  </div><!-- /tab-about -->
+</div><!-- /tabs -->
+</div>
 </body>
 </html>
