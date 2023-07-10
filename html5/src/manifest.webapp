@@ -1,7 +1,7 @@
 {
   "version": "0.2",
   "name": "UCThello",
-  "description": "MCTS UCT driven board game",
+  "description": "MCTS UCT driven board game (Othello variant)",
   "launch_path": "/index.html",
   "icons": {
     "16": "/img/icons/ucthello16.png",
