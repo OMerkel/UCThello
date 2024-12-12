@@ -3,7 +3,7 @@
 // All rights reserved.
 //
 // @author Oliver Merkel, <Merkel(dot)Oliver(at)web(dot)de>
-//
+// 
 
 function Uct() {}
 
