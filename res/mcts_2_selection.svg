@@ -22,7 +22,7 @@ Chaslot used these in earlier publications dating back to 2006, too.
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   width="100%" height="100%"
-  viewBox="32 125 1075 410">
+  viewBox="32 145 1075 410">
   <title
      id="titleMctsStateSelection">Details on MCTS state Selection</title>
   <metadata
@@ -73,6 +73,7 @@ Chaslot used these in earlier publications dating back to 2006, too.
       </cc:License>
     </rdf:RDF>
   </metadata>
+  <rect style="fill: #ffffff" x="0" y="100" width="1100" height="450" rx="0" ry="0"/>
   <g>
     <rect style="fill: #ffffff" x="568" y="337" width="80" height="36" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="568" y="337" width="80" height="36" rx="10" ry="10"/>
