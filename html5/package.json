@@ -1,10 +1,16 @@
 {
   "name": "io.github.omerkel.ucthello",
   "displayName": "UCThello",
-  "version": "0.2",
+  "version": "0.3",
   "description": "MCTS UCT driven board game (Othello variant)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest --run --coverage",
+    "test:watch": "vitest --run",
+    "test:e2e": "playwright test",
+    "coverage": "vitest --run --coverage",
+    "check:biome": "biome check src/index.html src/css/index.css src/js/hmi.js src/js/ui/pure.js src/js/ui/widgets.js",
+    "check:md": "markdownlint-cli2 \"../README.md\""
   },
   "author": "Oliver Merkel",
   "license": "parts MIT / parts Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License / see LICENSE file for details",
@@ -15,6 +21,14 @@
     ]
   },
   "devDependencies": {
-    "cordova-android": "^12.0.0"
+    "@playwright/test": "^1.62.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "cordova-android": "^15.1.0",
+    "jsdom": "^30.0.1",
+    "markdownlint-cli2": "^0.23.2",
+    "vitest": "^4.1.10"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }

@@ -1,5 +1,8 @@
-<img alt="UCThello icon" width="64" src="html5/src/img/icons/ucthello64.png" /> UCThello
-====================
+<!-- markdownlint-disable MD007 MD009 MD013 MD022 MD032 MD033 MD034 MD040 MD045 -->
+
+# UCThello
+
+<img alt="UCThello icon" width="64" src="html5/src/img/icons/ucthello64.png" /> 
 
 * <em>Start an online</em> <b>UCThello</b> <em>session on</em> http://omerkel.github.io/UCThello/html5/src
 * <em>Android APK available for install</em> <img align="top" width="32" src="res/android.gif" /> https://github.com/OMerkel/UCThello/releases
@@ -16,7 +19,7 @@ Upper Confidence Bounds (UCB), UCB applied to trees (UCT), AI,
 2-player board game, deterministic game with perfect information,
 JavaScript, ECMAScript, W3C WebWorker_ 
 
-# Abstract
+## Abstract
 
 UCThello is a board game using Monte-Carlo Tree Search (MCTS) with
 UCB (Upper Confidence Bounds) applied to trees (UCT in short) for the
@@ -46,7 +49,36 @@ either Lewis Waterman or John W. Mollett. Predecessor of _Reversi_ created
 by Mollett is _The game of Annexation_, also called _Annex_ back in
 19th century.
 
-# Monte-Carlo Tree Search
+## Repository Structure
+
+Top-level structure overview:
+
+* `doc/`: technical documentation.
+* `html5/`: web application sources, tests, and tooling.
+* `res/`: additional assets such as architecture and MCTS diagrams.
+
+Important subfolders:
+
+* `html5/src/js/`: runtime JavaScript modules.
+* `html5/src/js/ui/`: UI helper and widget modules.
+* `html5/src/test/`: unit and end-to-end tests.
+
+## Documentation
+
+* Software architecture and UML coverage:
+  [doc/software_architecture.md](doc/software_architecture.md)
+* MCTS UCT AI engine detail (Selection, Expansion, Simulation,
+  Backpropagation, exploration vs exploitation):
+  [doc/mcts_uct_ai_engine.md](doc/mcts_uct_ai_engine.md)
+* Functional and non-functional requirements baseline:
+  [doc/requirements.md](doc/requirements.md)
+
+## Monte-Carlo Tree Search
+
+Detailed algorithm documentation is maintained in
+[doc/mcts_uct_ai_engine.md](doc/mcts_uct_ai_engine.md).
+The section below keeps the original high-level narrative and
+historical context.
 
 The __Monte-Carlo Tree Search__ (MCTS in short) represents an algorithms used to build a
 _Search Tree_ interatively by successively adding nodes according to traversing of
@@ -153,7 +185,7 @@ while (node.unexamined.length == 0 && node.children.length > 0) {
 }
 ```
 
-## Expansion
+### Expansion
 
 The objective of the __Expansion__ step is to add a new unexplored child of
 the node determined by the previous _Selection_.
@@ -191,7 +223,7 @@ Terminal nodes do not have any child nodes. So it is sufficient to
 check for the unexamined.length in case a terminal node has been
 selected.
 
-## Simulation
+### Simulation
 
 Now the objective of a __Simulation__ is to playout a possible scenario
 starting from the newly expanded search tree leaf node. Simulation is
@@ -229,7 +261,7 @@ while(actions.length > 0) {
 }
 ```
 
-## Backpropagation
+### Backpropagation
 
 Objective of the __Backpropagation__ is to update the statistics of all nodes
 along the search tree path in reverse order until the root node is reached.
@@ -277,7 +309,7 @@ to a statistics value representing the total amount of wins
 found traversing the search tree node over all MCTS iterations.
 Additionally the amount of visits for the node is increased.
 
-# References
+## References
 
 * __[Cha10]__ Guillaume Maurice Jean-Bernard Chaslot, "[Monte-Carlo Tree Search](https://project.dke.maastrichtuniversity.nl/games/files/phd/Chaslot_thesis.pdf)", PHD Proefschrift, Universiteit Maastricht, NL, 2010.
 * __[CBSS08]__ Guillaume Chaslot, Sander Bakkes, Istvan Szita and Pieter Spronck, "[Monte-Carlo Tree Search: A New Framework for Game AI](http://sander.landofsand.com/publications/AIIDE08_Chaslot.pdf)", in Proceedings of the Fourth Artificial Intelligence and Interactive Digital Entertainment Conference, Stanford, California, 2008. Published by The AAAI Press, Menlo Park, California.
@@ -286,18 +318,13 @@ Additionally the amount of visits for the node is increased.
 * Brian Rose, "[Othello. A Minute to Learn... A Lifetime to Master](http://www.ffothello.org/livres/othello-book-Brian-Rose.pdf)", 2005.
 * __[WOF14]__ World Othello Federation, "[World Othello Championship Rules](http://www.worldothello.nu/sites/default/files/field/image/wocrules2014.pdf)", as valid for the 39th World Othello Championship 2015, Cambridge, UK, October 2015.
 
-# 3rd Party Libraries
-
-* jQuery: MIT licensed, https://github.com/jquery/jquery
-* jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
-
-# Links
+## Links
 
 * Association for the Advancement of Artificial Intelligence, http://www.aaai.org
 * HTML Living Standard, Web Workers, https://html.spec.whatwg.org
 * The Othello Museum, http://www.beppi.it/public/OthelloMuseum/pages/history.php
 
-## Othello Organizations
+### Othello Organizations
 Mind that UCThello follows (most) official tournament rules of the listed
 organizations depending on your selected options. Still UCThello is
 independent development from any work of these organizations.
@@ -312,7 +339,7 @@ independent development from any work of these organizations.
 * Othello Club Deutschland, http://www.othello-club.de.vu
 * United States Othello Association (USOA), http://www.usothello.org
 
-# Contributors / Authors
+## Contributors / Authors
 
 <table>
   <tr>
@@ -324,3 +351,5 @@ independent development from any work of these organizations.
 </table>
 
 _All logos, brands and trademarks mentioned belong to their respective owners._
+
+<!-- markdownlint-enable MD007 MD009 MD013 MD022 MD032 MD033 MD034 MD040 MD045 -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head profile='http://dublincore.org/documents/dcq-html/'>
   <link rel='icon' href='img/icons/favicon.ico' type='image/x-icon' />
   <link rel='schema.DC' href='http://purl.org/dc/elements/1.1/' />
@@ -13,7 +13,7 @@
   <meta name='DC.rights' content="
 See file named LICENSE being part of the repository.
 
-Copyright (c) 2016, 2023
+Copyright (c) 2016-2026
 @author Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de.
 All rights reserved.
 
@@ -23,7 +23,7 @@ All source code also including code parts written in HMTL, Javascript, CSS is un
 
 The MIT License (MIT)
 
-Copyright (c) 2016, 2023 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
+Copyright (c) 2016-2026 Oliver Merkel, Merkel(dot)Oliver(at)web(dot)de
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the &quot;Software&quot;), to deal in
@@ -52,20 +52,8 @@ If not otherwise stated all graphics (independent of its format) are licensed un
   <link rel='apple-touch-icon' href='img/icons/ucthello128.png' />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
     name='viewport' />
-  <link rel='stylesheet' type='text/css' href='thirdparty/jquery-ui-1.13.2/jquery-ui.css' />
   <link rel='stylesheet' type='text/css' href='css/index.css' />
-  <script src='thirdparty/jquery-3.7.0.js' type='text/javascript'></script> 
-  <script src='thirdparty/jquery-ui-1.13.2/jquery-ui.js' type='text/javascript'></script>
-  <script src='js/hmi.js' type='text/javascript' defer></script>
-  <script>
-  $( function() {
-    $( "#tabs" ).tabs();
-    $( "input" ).checkboxradio();
-    $( "#accordion" ).accordion({
-      heightStyle: "content"
-    });
-  } );
-  </script>
+  <script src='js/hmi.js' type='module'></script>
 </head>
 <body>
 <div id='game-page'>
@@ -139,7 +127,7 @@ If not otherwise stated all graphics (independent of its format) are licensed un
       <div id='status'></div>
       <div>
         <br />
-        <a id='new' class='ui-button ui-widget ui-corner-all'>New</a>
+        <button id='new' class='button-link' type='button'>New</button>
       </div>
     </center>
   </div>
@@ -200,7 +188,7 @@ If not otherwise stated all graphics (independent of its format) are licensed un
             current game options are chosen as intended by both players
             prior to game start.</p>
           <figure class='diagram' style='float: right;'>
-            <img src='img/rules_sog.png' />
+            <img src='img/rules_sog.png' alt='Start position board diagram' />
             <figcaption>Start of game. Black is allowed to set
               onto either c4, or d3 flipping d4, or e6, or f5
               flipping e5.</figcaption>
@@ -221,7 +209,7 @@ If not otherwise stated all graphics (independent of its format) are licensed un
           <p>The action of placing a game piece onto a vacant field is called a <b>set</b>.
             A player must <b>pass his turn</b> if no set is available.</p>
           <figure class='diagram' style='float: right;'>
-            <img src='img/rules_sample_1.png' />
+            <img src='img/rules_sample_1.png' alt='Sample board with legal moves for white' />
             <figcaption>The four legal available sets for White in this position.
              If setting c7 all three black pieces in a row get flipped. If setting
              d6 three black pieces from three different directions in total get
@@ -239,20 +227,20 @@ If not otherwise stated all graphics (independent of its format) are licensed un
             game pieces is performed in all these affected directions.</p>
           <br clear='all' />
           <figure class='diagram' style='float: left;'>
-            <img src='img/rules_sample_1-d6.png' />
+            <img src='img/rules_sample_1-d6.png' alt='Sample board after white sets d6' />
             <figcaption>Please assume the decision was setting
              d6 then three black pieces from three different directions
              got flipped as shown in total.</figcaption>
           </figure>
           <br clear='all' /><br />
           <figure class='diagram' style='float: left;'>
-            <img src='img/rules_sample_2.png' />
+            <img src='img/rules_sample_2.png' alt='Sample board with legal moves for black' />
             <figcaption>Another board situation with multiple available sets
               for Black's turn. If setting onto a6 by Black then&#8230;</figcaption>
           </figure>
           <br clear='all' /><br />
           <figure class='diagram' style='float: left;'>
-            <img src='img/rules_sample_2-a6.png' />
+            <img src='img/rules_sample_2-a6.png' alt='Sample board after black sets a6' />
             <figcaption>If choice is setting onto a6 by Black then just b6 gets flipped
               but not d6 and e6 since c6 breaks the row here although there is
               a black piece on f6.</figcaption>
@@ -270,19 +258,19 @@ If not otherwise stated all graphics (independent of its format) are licensed un
         <h3>Legal</h3>
         <div>
           <figure class='author' style='float: right;'>
-            <img src='img/oliver_moher-150812.jpg' />
+            <img src='img/oliver_moher-150812.jpg' alt='Portrait of Oliver Merkel' />
             <figcaption>Oliver Merkel, Cliffs of Moher, Ireland, <a rel='license'
               href='http://creativecommons.org/licenses/by-nc-nd/4.0/'
               target='_blank'>cc-by-nc-nd 4.0</a>.</figcaption>
           </figure>
           <br />
-          <p>Copyright (c) 2016, 2023<br />
+          <p>Copyright (c) 2016-2026<br />
           <em>@author</em> Oliver Merkel, Merkel(dot) Oliver(at) web(dot) de.<br />
           All rights reserved.<br />
           Logos, brands, and trademarks belong to their respective owners.</p>
           <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
           <h4>The MIT License (MIT)</h4>
-          <p>Copyright (c) 2016, 2023 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
+          <p>Copyright (c) 2016-2026 Oliver Merkel, Merkel(dot) Oliver(at) web(dot)de</p>
 
           <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
           this software and associated documentation files (the &quot;Software&quot;), to deal in
@@ -335,22 +323,11 @@ If not otherwise stated all graphics (independent of its format) are licensed un
       </div>
       <h3>Third Party Code Licenses</h3>
       <div>
-        <p>This <b>UCThello</b> implementation uses unmodified
-        independent code libraries provided by <em>third parties</em>.
-        Since their licenses might vary the corresponding information is
-        <em>externally linked</em> below. Thus <em>these external links</em>
-        will enable you to reproduce any copyright notice,
-        any related list of conditions, disclaimers, and especially
-        the copyright holders and authors of the corresponding third
-        party functionality.</p>
-        <a href='https://github.com/jquery/jquery' class='ui-button ui-widget ui-corner-all' target='_blank' type='text/html'
-          title='jQuery - Repository'>
-          <img src='thirdparty/jquery-favicon.ico' width='16' height='16' />
-          jQuery: MIT</a>&nbsp;
-        <a href='https://github.com/jquery/jquery-ui' class='ui-button ui-widget ui-corner-all' target='_blank' type='text/html'
-          title='jQuery UI - Repository'>
-          <img src='thirdparty/jquery-ui-1.13.2/jquery-ui-favicon.ico' width='16' height='16' />
-          jQuery UI: MIT</a>
+        <p>This <b>UCThello</b> web frontend currently does not require
+        bundled third party runtime JavaScript libraries.
+        Third party code notices for optional tooling or platform packaging
+        are documented in the repository where applicable.</p>
+      </div>
       </div>
     </div>
   </div><!-- /tab-about -->
